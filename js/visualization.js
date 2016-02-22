@@ -12,10 +12,10 @@ var clock = new THREE.Clock();
 var raycaster = new THREE.Raycaster();
 var sensors,renderer,scene,camera,zRatio,sphereMesh,similaunGeometry,data,control,orbit,data,borderVertexes,borderPoints,similaunTexture,borderMesh;
 var worldWidth=imgResolution,worldHeight=imgResolution;
-var startx=Math.floor(worldWidth*0.476);
-var starty=Math.floor(worldHeight*0.332);
-var gridW=Math.floor(worldWidth*0.031);;
-var gridH=Math.floor(worldHeight*0.031);
+var startx=Math.floor(worldWidth*0.486);
+var starty=Math.floor(worldHeight*0.320);
+var gridW=Math.round(worldWidth*0.030);;
+var gridH=Math.round(worldHeight*0.030);
 var pts,displacements;
 
 //CONTROLS
@@ -262,7 +262,7 @@ function addSensors(callback){
     displacements[x]=new Array(7);
     for (var y = 0; y < 7; y++){
       var tx=startx-gridW+x*gridW;
-      var ty=starty-gridW+y*gridH;
+      var ty=starty-gridH+y*gridH;
       displacements[x][y]=new THREE.Vector3(0,0,0);
       pts[x][y]=new THREE.Vector2(tx,ty);
     }
@@ -327,11 +327,19 @@ function render() {
         if(x>0 && x<6 && y>0 && y<6){
           displacements[x][y]=new THREE.Vector3(Math.sin(time+x+y-1)*parameters.noise*0.5,
           Math.sin(time+x+y-1)*parameters.noise,Math.sin(time+x+y-1)*parameters.noise*0.5);
-        }
+          sensors[x-1][y-1].position.set(
+            (worldWidth/2)*(tx-(worldHeight-1)*0.5)/(worldHeight*0.5)+displacements[x][y].x+meshShift.x,
+            data[(ty*lw+tx)]*zRatio+displacements[x][y].y+meshShift.y,
+            (worldWidth/2)*(ty-(worldHeight-1)*0.5)/(worldHeight*0.5)+displacements[x][y].z+meshShift.z);
+            vertices[(ty*lw+tx)*3] = (worldWidth/2)*(tx-worldWidth*0.5)/(worldWidth*0.5)+displacements[x][y].x;
+            vertices[(ty*lw+tx)*3+1] = data[(ty*lw+tx)]*zRatio+displacements[x][y].y;
+            vertices[(ty*lw+tx)*3+2] =(worldWidth/2)*(ty-worldWidth*0.5)/(worldWidth*0.5)+displacements[x][y].z;
+          }
+
       }
     }
     //UPDATING SENSOR POSITION
-    for (var x = 0; x < 5; x++) {
+  /*  for (var x = 0; x < 5; x++) {
       for (var y = 0; y < 5; y++) {
         var tx=t_startx+(x+1)*gridW;
         var ty=t_starty+(y+1)*gridH;
@@ -343,7 +351,7 @@ function render() {
           vertices[(ty*lw+tx)*3+1] = data[(ty*lw+tx)]*zRatio+displacements[x+1][y+1].y;
           vertices[(ty*lw+tx)*3+2] =(worldWidth/2)*(ty-worldWidth*0.5)/(worldWidth*0.5)+displacements[x+1][y+1].z;
         }
-      }
+      }*/
       //INTERPOLATE THE GRID ELEMENTS POSITION
       for (var x = 0; x < 6; x++) {
         for (var y = 0; y < 6; y++) {

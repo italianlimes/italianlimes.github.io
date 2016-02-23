@@ -2,3 +2,8 @@ body {
     margin: 0;
     overflow: hidden;
 }
+
+.sensorVis{
+  height:150px;
+  width:100%;
+}

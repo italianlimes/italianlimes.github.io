@@ -1,0 +1,52 @@
+// rem fallback - credits: http://zerosixthree.se/
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+// antialiasing mode font rendering
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// background images
+
+@mixin background($imgpath,$position:center center,$repeat: no-repeat) {
+    background: {
+  		image: url($imgpath);
+  		position: $position;
+  		repeat: $repeat;}
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    }
+
+
+.background-publication {
+    @include background('/images/publication.jpg');
+}
+
+.background-mountain {
+    @include background('/images/Italian limes mesh.png');
+}
+
+.background-zkm {
+    @include background('/images/zkm.jpg');
+}
+
+.background-alps {
+    @include background('/images/alps.jpg');
+}
+
+.background-glacier {
+    @include background('/images/glacier.jpg');
+}

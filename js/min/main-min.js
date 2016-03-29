@@ -1,0 +1,1 @@
+function onResize(){camera.aspect=window.innerWidth/window.innerHeight,camera.updateProjectionMatrix(),renderer.setSize(window.innerWidth,window.innerHeight)}Detector.webgl?window.onload=init:Detector.addGetWebGLMessage(),window.addEventListener("resize",onResize,!1);

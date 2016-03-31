@@ -10,15 +10,13 @@
         <link  href="css/vis.css" rel="stylesheet" type="text/css">
     -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.12.0/vis.min.js"></script>
-    <link  href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.12.0/vis.css" rel="stylesheet" type="text/css">
-
-    <link  href="css/main.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js" charset="utf-8"></script>
+    <script src="js/metricsgraphics.js" charset="utf-8"></script>
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.8.0/metricsgraphics.min.css" rel="stylesheet" type="text/css">
     <script src="js/data.js"></script>
     <style>
-    .sensorVis{
-      height:150px;
-      width:100%;
+    html{
+          font-size: 12px;
     }
     #container{
       padding: 10px;
@@ -26,10 +24,34 @@
     body{
       font-family: "Helvetica","Times New Roman", Times, serif;
     }
+    svg{
+      overflow: visible;
+    }
+    .chart{display:inline-block;width:100%;}
+    @media screen and (min-width: 768px) {
+      .chart {
+          width:50%;
+      }
+    }
+    @media screen and (min-width: 1024px) {
+      .chart {
+          width:33%;
+      }
+    }
+    @media screen and (min-width: 1280px) {
+      .chart {
+          width:25%;
+      }
+    }
+    @media screen and (min-width: 1400px) {
+      .chart {
+          width:20%;
+      }
+    }
     </style>
   </head>
   <body>
-    <h1 style="text-align:center;">ITALIANLIMES SENSOR DATA</h1>
+    <h1 style="text-align:center;color:black;">ITALIANLIMES SENSOR DATA</h1>
     <div id="container"></div>
   </body>
 </html>

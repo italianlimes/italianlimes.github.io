@@ -4,7 +4,7 @@
 * https://github.com/italianlimes
 *
 */
-var dataUrl="http://127.0.0.1:8080/api/data";
+var dataUrl="http://italianlimes-angeloseme.rhcloud.com/api/data/";
 d3.json(dataUrl, function(data) {
     for(var i=0;i<data.sensor_data.length;i++){
     var sensor_id=data.sensor_data[i]._id;

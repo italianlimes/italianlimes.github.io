@@ -1,35 +1,31 @@
 /**
- * ITALIAN LIMES
- * data.js
- * https://github.com/italianlimes
- *
- */
-var dataUrl="http://italianlimes-angeloseme.rhcloud.com/api/data";
-$.get( "http://italianlimes-angeloseme.rhcloud.com/api/data", function( data ) {
-  //console.log(data);
-  for(var key in data){
-  //  console.log(key);
-    $('#container').append($("<h3>").text(key));
-    var div = document.createElement('div');
-    div.id = key;
-    div.className = 'sensorVis';
-    var items =data[key];
-    //console.log(items);
-    var dataset = new vis.DataSet(items);
-    var options = {
-      start: '2016-02-22',
-      end: new Date(),
-      height:'150px',
-      min:'2016-01-01',
-      max:'2016-12-31',
-    //  showCustomTime:true
-    dataAxis: {
-        left: {
-            range: {min:355000, max:365000}
-        }
-    }
-    };
-    var graph2d = new vis.Graph2d(div, dataset, options);
-    document.getElementById('container').appendChild(div);
+* ITALIAN LIMES
+* data.js
+* https://github.com/italianlimes
+*
+*/
+var dataUrl="http://127.0.0.1:8080/api/data";
+d3.json(dataUrl, function(data) {
+    for(var i=0;i<data.sensor_data.length;i++){
+    var sensor_id=data.sensor_data[i]._id;
+    var sensor_data = MG.convert.date(data.sensor_data[i].data, 'date',"%Y-%m-%dT%H:%M:%S.%LZ");
+    //var data = MG.convert.date(scope.rates.data, 'date', '%Y-%m-%d');
+
+
+    $('#container').append("<div class='chart' id='"+sensor_id+"'></div>");
+    MG.data_graphic({
+      title: sensor_id,
+      data: data.sensor_data[i].data,
+      //missing_is_hidden: true,
+      area:true,
+      utc_date:true,
+      yax_count:4,
+      min_y:50,
+      full_width:true,
+      height: 200,
+      target: document.getElementById(sensor_id),
+      x_accessor: 'date',
+      y_accessor: 'altitude'
+    });
   }
 });

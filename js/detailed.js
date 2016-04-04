@@ -5,7 +5,7 @@
  *
  */
 
- var dataUrl="http://italianlimes-angeloseme.rhcloud.com/api/logs";
+ var dataUrl="http://italianlimes-angeloseme.rhcloud.com/api/detailed";
  var start=0;
  var count=10;
  var processing=false;

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ITALIAN LIMES</title>
+    <!--
+        <script src="js/three.min.js"></script>
+        <script src="js/dat.gui.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/vis.min.js"></script>
+        <link  href="css/vis.css" rel="stylesheet" type="text/css">
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js" charset="utf-8"></script>
+    <script src="js/metricsgraphics.js" charset="utf-8"></script>
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.8.0/metricsgraphics.min.css" rel="stylesheet" type="text/css">
+    <link  href="css/spinner.css" rel="stylesheet" type="text/css">
+    <script src="js/altitude.js"></script>
+
+    <style>
+    html{
+          font-size: 12px;
+    }
+
+    .chart{
+      margin-top:-30px;
+    }
+    #container{
+      padding: 10px;
+    }
+    body{
+      font-family: "Helvetica","Times New Roman", Times, serif;
+    }
+    .spinner{}
+
+    .chart{display:inline-block;width:100%;}
+    @media screen and (min-width: 768px) {
+      .chart {
+          width:50%;
+      }
+    }
+    @media screen and (min-width: 1024px) {
+      .chart {
+          width:33%;
+      }
+    }
+    @media screen and (min-width: 1280px) {
+      .chart {
+          width:25%;
+      }
+    }
+    @media screen and (min-width: 1400px) {
+      .chart {
+          width:20%;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align:center;color:black;">ITALIANLIMES SENSOR DATA</h1>
+    <div id="container"></div>
+    <div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
+    </body>
+</html>

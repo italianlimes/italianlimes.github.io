@@ -644,10 +644,12 @@ function onMouseMove(event) {
     orbit.autoRotate = true;
     parameters.animate = true;
     var label = document.getElementById('label');
+    $("#label").css("display","none");
     for (var v = 0; v < sensors.length; v++) {
         var intersects = raycaster.intersectObjects(sensors[v]);
         for (var t = 0; t < intersects.length; t++) {
             var index = intersects[t].object.sensor_id;
+            $("#label").css("display","block");
             $("#label").html(coordinates[index]);
             intersects[t].object.material.color = new THREE.Color(0xff0000);
             orbit.autoRotate = false;

@@ -87,6 +87,7 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    renderer.domElement.style.display='none';
     scene.position.set(-imgResolution * 0.05, -imgResolution * 0.25, imgResolution * 0.13);
 
     //CAMERA
@@ -139,6 +140,7 @@ function init() {
                 //  window.addEventListener( 'click', onMouseClick, false );
                 $(window).bind("tap", onMouseClick);
                 $("canvas").bind("click", onMouseClick);
+                $("canvas").fadeIn();
                 updateMesh();
                 render();
             });

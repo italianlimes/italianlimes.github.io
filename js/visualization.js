@@ -573,7 +573,7 @@ function render() {
             orbit.autoRotate = true;
         }
     }
-    var t = Math.min(0.95, Math.max(0.15, Math.abs(Math.sin(clock.getElapsedTime() * 0.2 + 0.3)) - 0.2));
+    var t = Math.min(0.99, Math.max(0.15, Math.abs(Math.sin(clock.getElapsedTime() * 0.2 + 0.3))*1.5 - 0.2));
 
     if (parameters.animate || t < 0.95) {
         scene.getObjectByName('similaunMesh').material.color = new THREE.Color(t, t, t);

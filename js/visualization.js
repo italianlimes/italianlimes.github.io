@@ -4,7 +4,7 @@
  * https://github.com/italianlimes
  *
  */
-var imgResolution = Math.max(128, Math.min(512, Math.pow(2, Math.floor(Math.log2(window.innerWidth / 6)))));
+var imgResolution = Math.max(128, Math.min(256, Math.pow(2, Math.floor(Math.log2(window.innerWidth / 4)))));
 var borderGeometry = new THREE.BufferGeometry();
 var clock = new THREE.Clock();
 var raycaster = new THREE.Raycaster();

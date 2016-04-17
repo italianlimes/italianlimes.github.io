@@ -95,7 +95,7 @@ function init() {
     camera.position.y = 0.5 * imgResolution;
     if (window.innerWidth < 768) camera.position.y += imgResolution * 0.8 * (1 - (window.innerWidth / 768.0));
     camera.position.z = 0;
-    orbit = new THREE.OrbitControls(camera);
+    orbit = new THREE.OrbitControls(camera, renderer.domElement);
     //camera.lookAt(new THREE.Vector3(0,0,0));
     orbit.zoomSpeed = 0.05;
     orbit.minDistance = 10;

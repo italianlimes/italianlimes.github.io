@@ -131,6 +131,7 @@ function init() {
     //addControls(parameters);
     addSimilaunModel(function() {
         addSensors(function() {
+            updateMesh();
             addBorder(function() {
                 addAmbientLight();
                 //addDirectionalLight();
@@ -141,7 +142,6 @@ function init() {
                 $(window).bind("tap", onMouseClick);
                 $("canvas").bind("click", onMouseClick);
                 $("canvas").fadeIn();
-                updateMesh();
                 render();
             });
         });

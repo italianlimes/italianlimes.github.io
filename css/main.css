@@ -1,12 +1,9 @@
-@font-face {
-  font-family: Poppins-Medium;
-  src: url("../font/Poppins-Medium.otf") format("opentype");
-}
+
 body {
     margin: 0;
     overflow: hidden;
-    font-family: 'Poppins-Medium', serif;
     color:white;
+    background-color:black;
 }
 canvas{
   width:100%!important;

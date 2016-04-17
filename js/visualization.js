@@ -550,7 +550,7 @@ function render() {
                 animationFinished = true;
 
         }
-        var t = Math.max(0, Math.min(1, maxDis - 0.1)); //Math.max(0.0001,1-Math.max(Math.min(clock.getElapsedTime()-delay,2.0),0)/1.0)
+        var t = Math.max(0, Math.min(1, maxDis*3 - 0.1)); //Math.max(0.0001,1-Math.max(Math.min(clock.getElapsedTime()-delay,2.0),0)/1.0)
         mesh.material.transparent = true;
         mesh.material.opacity = t;
         //mesh.material.opacity=Math.max(0.0000,1-Math.max(Math.min(clock.getElapsedTime()-delay,3.0),0)/3.0);

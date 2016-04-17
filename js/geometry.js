@@ -58,6 +58,39 @@ function barycentricInterpolation(a,b,c,d,tx,ty){
   return v;
 }
 
+/*function barycentricInterpolationIndexes(tx,ty){
+  var sumt=0.5;
+  var r2=Math.sqrt(2);
+  var v={a:0,b:0,c:0,d:0};
+  var disa=distance(tx,ty,0.0,0.0);
+  var disb=distance(tx,ty,1.0,0.0);
+  var disc=distance(tx,ty,1.0,1.0);
+  var disd=distance(tx,ty,0.0,1.0);
+
+  if((1-tx)>ty){
+    v.a=eulerSum(r2,disd,disb)/sumt;
+    v.b=eulerSum(1,disa,disd)/sumt;
+    v.d=eulerSum(1,disa,disb)/sumt;
+  }else{
+    v.c=eulerSum(r2,disd,disb)/sumt;
+    v.b=eulerSum(1,disc,disd)/sumt;
+    v.d=eulerSum(1,disc,disb)/sumt;
+  }
+  return v;
+}*/
+
+function barycentricInterpolationIndexes(tx,ty){
+  var v={a:0,b:0,c:0,d:0};
+
+    v.a=(1-tx)*(1-ty);
+    v.b=tx*(1-ty);
+    v.c=tx*ty;
+    v.d=(1-tx)*ty ;
+
+  return v;
+}
+
+
 function distance(x1,y1,x2,y2){
   return Math.sqrt(Math.pow(x1-x2,2.0)+Math.pow(y1-y2,2.0));
 }

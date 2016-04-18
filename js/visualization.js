@@ -395,7 +395,7 @@ function addSensors(callback) {
         color: 0xaaaaaa,
         fog: false,
         linewidth: 1,
-        opacity: 1,
+        opacity: 0,
         transparent: true
     });
 
@@ -558,6 +558,8 @@ function render() {
         //mesh.material.opacity=Math.max(0.0000,1-Math.max(Math.min(clock.getElapsedTime()-delay,3.0),0)/3.0);
         scene.getObjectByName('oldBorder').material.transparent = true;
         scene.getObjectByName('oldBorder').material.opacity = 1 - t;
+        scene.getObjectByName('grid').material.transparent = true;
+        scene.getObjectByName('grid').material.opacity = 1 - t;
         scene.getObjectByName('sky').material.transparent = true;
         scene.getObjectByName('sky').material.uniforms.opacity.value = Math.max(t, 0);
         $("#label_1920").css('opacity', 1 - Math.max(t, 0));

@@ -90,12 +90,16 @@ a {
 	&:hover {
 		color: darken($il-blue, 20%);
 	}
+	&:focus {
+		outline: none;
+		box-shadow: none;
+		border-color: none;
+	}
 }
 
 img {
 	width: 100%;
 	height: auto;
-	//padding: 40px 0px;
 }
 
 /* --------------------------------
@@ -124,8 +128,166 @@ html, body {
 	margin: 0;
 	max-width: none;
 	height: 100vh;
-	background-color: grey;
+	background-color: lighten($il-black, 10%);
 }
+
+// Cover Overlay
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: rgba($il-black, 0.5);
+	#explore {
+		color: red;
+		text-align: center;
+		&:hover {
+			opacity: 1.0;
+			cursor: pointer;
+			@include transition(all .2s);
+		}
+	}
+}
+
+// Pulsing Loader
+
+.loading {
+	margin: 5rem 5rem 5rem 2.5rem;
+	border-radius: 50px;
+	line-height: 100px;
+	text-align: center;
+	width: 50px;
+	height: 50px;
+	//position: absolute; <!-- Center -->
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-transform: uppercase;
+	background: rgba($il-white, 0.5);
+	&:focus {
+		outline: none;
+		box-shadow: none;
+		border-color: none;
+	}
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($il-white, 0.2);
+    border-radius: 50px;
+    opacity: 0;
+    border: 1px solid rgba($il-white, 1.0);
+  }
+
+  &:before {
+    transform: scale(1);
+    animation: pulse 2s infinite linear;
+  }
+
+  &:after {
+    animation: pulse 2s 1s infinite linear;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  33% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+// Cover Video Background
+
+* { box-sizing: border-box; }
+.video-background {
+	background: $il-black;
+	position: fixed;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: -99;
+}
+.video-foreground,
+.video-background iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+#vidtop-content {
+	top: 0;
+	color: $il-white;
+}
+.vid-info {
+	width: 100%;
+	max-width: 70rem;
+	color: $il-white;
+	padding: 2rem;
+	@include MQ(M) {
+		padding: 4rem 4rem 4rem 5rem;
+	}
+	h1 {
+		margin-top: 0;
+		font-weight: 300;
+		line-height: 1.2;
+		letter-spacing: 0.1rem;
+		font-size: 2rem;
+		@include MQ(S) {
+			font-size: 3rem;
+		}
+		@include MQ(M) {
+			font-size: 3.75rem;
+			max-width: 50rem;
+		}
+		@include MQ(L) {
+			font-size: 4.5rem;
+			max-width: 60rem;
+		}
+		b {font-weight: 700;}
+	}
+	a { display: block;
+		color: $il-white;
+		text-decoration: none;
+		transition: .6s background;
+		border-bottom: none;
+		margin: 2rem auto;
+	}
+}
+@media (min-aspect-ratio: 16/9) {
+	.video-foreground {
+		height: 300%;
+		top: -100%;
+	}
+}
+@media (max-aspect-ratio: 16/9) {
+	.video-foreground {
+		width: 300%;
+		left: -100%;
+	}
+}
+@include MQ(S) {
+	.vid-info .acronym {
+		display: none;
+	}
+}
+
+// content
 
 .main-content {
 
@@ -764,92 +926,6 @@ ul.logo {
     }
 
 }
-
-/*
-	Cover Video Background
-*/
-
-* { box-sizing: border-box; }
-.video-background {
-	background: $il-black;
-	position: fixed;
-	top: 0; right: 0; bottom: 0; left: 0;
-	z-index: -99;
-}
-.video-foreground,
-.video-background iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-}
-#vidtop-content {
-	top: 0;
-	color: $il-white;
-}
-.vid-info {
-	//position: absolute;
-	//top: 50px;
-	//left: 50px;
-	width: 100%;
-	max-width: 70rem;
-	//background: rgba(0,0,0,0.3);
-	color: $il-white;
-	padding: 2rem;
-	@include MQ(M) {
-		padding: 4rem 4rem 4rem 5rem;
-	}
-	h1 {
-		margin-top: 0;
-		font-weight: 400;
-		line-height: 1.2;
-		letter-spacing: 0.1rem;
-		font-size: 2rem;
-		@include MQ(S) {
-			font-size: 3rem;
-		}
-		@include MQ(M) {
-			font-size: 3.75rem;
-		}
-		@include MQ(L) {
-			font-size: 4.5rem;
-		}
-		b {font-weight: 700;}
-	}
-	a { display: block;
-		color: $il-white;
-		text-decoration: none;
-		//background: rgba($il-black,0.5);
-		transition: .6s background;
-		border-bottom: none;
-		margin: 2rem auto;
-		//text-align: center;
-		&:hover {
-			color: $il-blue;
-			@include transition(all .2s);
-		}
-	}
-}
-@media (min-aspect-ratio: 16/9) {
-	.video-foreground {
-		height: 300%;
-		top: -100%;
-	}
-}
-@media (max-aspect-ratio: 16/9) {
-	.video-foreground {
-		width: 300%;
-		left: -100%;
-	}
-}
-@include MQ(S) {
-	.vid-info .acronym {
-		display: none;
-	}
-}
-
 
 /*
 	Pure.css offsets

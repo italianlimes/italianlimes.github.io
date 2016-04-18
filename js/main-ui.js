@@ -1,5 +1,14 @@
 jQuery(document).ready(function($){
 
+// COVER PAGE
+
+    // click explore to close overlay
+    $('#explore').on('click', function(event){
+        event.preventDefault();
+        $("#vidtop-content").fadeOut(1000);
+        $(".overlay").fadeOut(3000);
+    });
+
 // RESPONSIVE NAVIGATION //
 
     {

@@ -1,36 +1,66 @@
 jQuery(document).ready(function($){
 
+// RESPONSIVE NAVIGATION //
 
-// MENU //
+    {
+    var menu = document.getElementById('menu'),
+        WINDOW_CHANGE_EVENT = ('onorientationchange' in window) ? 'orientationchange':'resize';
 
-$(".menu-hover").on({
-    'mouseenter': function (e) {
-        e.stopPropagation();
-                    var $lefty = $(".side-menu");
-                        $lefty.animate({
-                        left: parseInt($lefty.css('left')) < -195 ?
-                        $lefty.css('left') === 0 :
-                        -95},200,'swing');
-                   }
-});
-$('.menu-hover').on({
-    'mouseleave': function(){
-        var $lefty = $(".side-menu");
-            $lefty.animate({
-            left: -196
-        },200,'swing');
+    function toggleHorizontal() {
+        [].forEach.call(
+            document.getElementById('menu').querySelectorAll('.custom-can-transform'),
+            function(el){
+                el.classList.toggle('pure-menu-horizontal');
+            }
+        );
+    };
+
+    function toggleMenu() {
+        // set timeout so that the panel has a chance to roll up
+        // before the menu switches states
+        if (menu.classList.contains('open')) {
+            setTimeout(toggleHorizontal, 500);
+        }
+        else {
+            toggleHorizontal();
+        }
+        menu.classList.toggle('open');
+        document.getElementById('toggle').classList.toggle('x');
+    };
+
+    function closeMenu() {
+        if (menu.classList.contains('open')) {
+            toggleMenu();
+        }
     }
-});
 
+    document.getElementById('toggle').addEventListener('click', function (e) {
+        toggleMenu();
+    });
 
-// PANEL //
+    window.addEventListener(WINDOW_CHANGE_EVENT, closeMenu);
+    };
 
-	//open the lateral panel
+// SIDE PANEL //
+
+	//open the side panel
 	$('#side-menu-about').on('click', function(event){
 		event.preventDefault();
 		$('.panel').addClass('is-visible');
+        $(".panel").load("about-panel.html");
 	});
-	//close the lateral panel
+    $('#side-menu-borders').on('click', function(event){
+        event.preventDefault();
+        $('.panel').addClass('is-visible');
+        $(".panel").load("borders-panel.html");
+    });
+    $('#side-menu-sensors').on('click', function(event){
+        event.preventDefault();
+        $('.panel').addClass('is-visible');
+        $(".panel").load("sensors-panel.html");
+    });
+
+	//close the side panel
 	$('.panel').on('click', function(event){
 		if( $(event.target).is('.panel') || $(event.target).is('.panel-close') ) {
 			$('.panel').removeClass('is-visible');
@@ -38,8 +68,7 @@ $('.menu-hover').on({
 		}
 	});
 
-
-// TABS //
+// SIDE PANEL TABS //
 
 	$('ul.tabs li').click(function(){
 		var tab_id = $(this).attr('data-tab');
@@ -51,7 +80,6 @@ $('.menu-hover').on({
 		$("#"+tab_id).addClass('current');
 	});
 
-
-// END
+// BASTA //
 
 });

@@ -7,11 +7,20 @@
 @import '../partials/layout'; // responsive grid and media queries
 
 
+/*
+	Hide vis controls
+*/
+
+.dg, ac {display: none !important;}
+#stats {display:none !important;}
+
+
 /* --------------------------------
 
 Primary style
 
 -------------------------------- */
+
 
 *, *::after, *::before {
 //	@include box-sizing(border-box);
@@ -108,6 +117,14 @@ html, body {
 	height: 100%;
 }
 
+#logo {
+	width: 180px;
+	height: auto;
+	&:hover {
+		opacity: 0.7;
+	}
+}
+
 // 100% height row section
 
 .cover {
@@ -146,7 +163,7 @@ html, body {
 	height: 100%;
 	width: 100%;
 	visibility: hidden;
-	@include transition(visibility 0s .6s);
+	@include transition(visibility 0s .5s);
 
 	&::after {
 		/* overlay layer */
@@ -409,11 +426,23 @@ ul.tabs {
 
 .tab-content {
 	display: none;
-	padding-top: 60px;
 	padding-bottom: 120px;
 	&.current{
   		display: inherit;
 	}
+}
+
+.award_row {
+	width: 100%;
+	padding-bottom: 4%;
+}
+.award {
+	display: inline-table;
+	width: 48%;
+	text-align: center;
+	h5 {font-weight: 700; padding-bottom: 5px;}
+	p {font-size: 1rem; line-height: 1.3;}
+	&:first-child {padding-right: 4%;}
 }
 
 /*
@@ -564,14 +593,14 @@ ul.logo {
 }
 
 
-
 /*
 	lightgallery
 */
 
 #gallery {
-//	background-color: darken($il-white, 20%);
-	margin: 5em 2em;
+	background-color: lighten($il-black, 5%);
+	position: inherit;
+	padding: 5em 2em;
 
 	-moz-column-gap: 1em;
 	-webkit-column-gap: 1em;
@@ -625,6 +654,211 @@ ul.logo {
 	}
 
 }
+
+/*
+	purecss.io horizontal-to-vertical menu
+*/
+
+.custom-wrapper {
+	position: absolute;
+	width: 100%;
+    height: 3.0em;
+    overflow: hidden;
+    @include transition(all .5s);
+}
+
+.custom-wrapper.open {
+    height: 18em;
+    background-color: $il-blue;
+	a {
+		color: $il-white;
+		&:hover {
+		color: rgba($il-white, 0.7);}
+	}
+}
+
+.pure-menu {
+	a {
+		color: $il-white;
+		&:hover {
+		color: ($il-blue);}
+	}
+}
+
+.pure-menu-heading {
+	display: inline-block;
+	padding: 1em 1em;
+}
+
+.pure-menu-horizontal {
+    width: 100%;
+}
+
+.pure-menu-item {
+	display: inline-block;
+}
+
+.pure-menu-link {
+	display: inline-block;
+	padding: 1em 1em 0.5em 1em;
+}
+
+.menu-right {
+    width: 432px;
+    display: inline-block;
+    float: right;
+    text-align: right;
+}
+
+.custom-toggle {
+    width: 34px;
+    height: 34px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    &:hover {opacity: 0.7;}
+}
+
+.custom-toggle .bar {
+    background-color: $il-white;
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 26px;
+    right: 14px;
+    @include transition(all .5s);
+}
+
+.custom-toggle .bar:first-child {
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+}
+
+.custom-toggle.x .bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.custom-toggle.x .bar:first-child {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 47.999em) {
+
+    .custom-menu-3 {
+        text-align: left;
+    }
+
+    .pure-menu-item {
+		display: block;
+	}
+
+    .custom-toggle {
+        display: block;
+    }
+
+    .menu-right {
+    	float: left;
+    }
+
+}
+
+/*
+	Cover Video Background
+*/
+
+* { box-sizing: border-box; }
+.video-background {
+	background: $il-black;
+	position: fixed;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: -99;
+}
+.video-foreground,
+.video-background iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+#vidtop-content {
+	top: 0;
+	color: $il-white;
+}
+.vid-info {
+	//position: absolute;
+	//top: 50px;
+	//left: 50px;
+	width: 100%;
+	max-width: 70rem;
+	//background: rgba(0,0,0,0.3);
+	color: $il-white;
+	padding: 2rem;
+	@include MQ(M) {
+		padding: 4rem 4rem 4rem 5rem;
+	}
+	h1 {
+		margin-top: 0;
+		font-weight: 300;
+		line-height: 1.2;
+		letter-spacing: 0.1rem;
+		font-size: 2rem;
+		@include MQ(S) {
+			font-size: 3rem;
+		}
+		@include MQ(M) {
+			font-size: 3.75rem;
+		}
+		@include MQ(L) {
+			font-size: 4.5rem;
+		}
+		b {font-weight: 700;}
+	}
+	a { display: block;
+		color: $il-white;
+		text-decoration: none;
+		//background: rgba($il-black,0.5);
+		transition: .6s background;
+		border-bottom: none;
+		margin: 2rem auto;
+		//text-align: center;
+		&:hover {
+			color: $il-blue;
+			@include transition(all .2s);
+		}
+	}
+}
+@media (min-aspect-ratio: 16/9) {
+	.video-foreground {
+		height: 300%;
+		top: -100%;
+	}
+}
+@media (max-aspect-ratio: 16/9) {
+	.video-foreground {
+		width: 300%;
+		left: -100%;
+	}
+}
+@include MQ(S) {
+	.vid-info .acronym {
+		display: none;
+	}
+}
+
 
 /*
 	Pure.css offsets

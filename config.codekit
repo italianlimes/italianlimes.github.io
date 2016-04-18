@@ -2,6 +2,24 @@
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
 "creatorBuild": "19115",
 "files": {
+	"\/about-panel.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/about-panel.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/about.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/about.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/border.json": {
 		"fileType": 524288,
 		"ignore": 1,
@@ -12,6 +30,24 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
+		},
+	"\/borders-panel.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/borders-panel.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/cover.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/cover.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/css\/lightgallery.css": {
 		"fileType": 16,
@@ -36,6 +72,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/css\/main.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/pure-0.6.0-grids-responsive.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/pure-0.6.0-grids-responsive.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -514,46 +559,13 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/Italian limes mesh.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 2.24862e+06,
-		"inputAbbreviatedPath": "\/images\/Italian limes mesh.png",
-		"outputAbbreviatedPath": "\/images\/Italian limes mesh.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/logos\/la_biennale_di_venezia_Logo54dfa51b345e9.medium.jpg": {
+	"\/images\/logos\/logo-domus.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 44517,
-		"inputAbbreviatedPath": "\/images\/logos\/la_biennale_di_venezia_Logo54dfa51b345e9.medium.jpg",
-		"outputAbbreviatedPath": "\/images\/logos\/la_biennale_di_venezia_Logo54dfa51b345e9.medium.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/logos\/logo-domus.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 2580,
-		"inputAbbreviatedPath": "\/images\/logos\/logo-domus.png",
-		"outputAbbreviatedPath": "\/images\/logos\/logo-domus.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/logos\/logo-ed-awards.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 9008,
-		"inputAbbreviatedPath": "\/images\/logos\/logo-ed-awards.png",
-		"outputAbbreviatedPath": "\/images\/logos\/logo-ed-awards.png",
+		"initialSize": 12598,
+		"inputAbbreviatedPath": "\/images\/logos\/logo-domus.jpg",
+		"outputAbbreviatedPath": "\/images\/logos\/logo-domus.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -562,9 +574,20 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 626723,
+		"initialSize": 19820,
 		"inputAbbreviatedPath": "\/images\/logos\/logo-eda-winner-gold.jpg",
 		"outputAbbreviatedPath": "\/images\/logos\/logo-eda-winner-gold.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/logos\/logo-italian-limes.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5508,
+		"inputAbbreviatedPath": "\/images\/logos\/logo-italian-limes.png",
+		"outputAbbreviatedPath": "\/images\/logos\/logo-italian-limes.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -573,7 +596,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 30623,
+		"initialSize": 56530,
 		"inputAbbreviatedPath": "\/images\/logos\/logo-la-biennale-di-venezia-1.jpg",
 		"outputAbbreviatedPath": "\/images\/logos\/logo-la-biennale-di-venezia-1.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -584,7 +607,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 60690,
+		"initialSize": 33459,
 		"inputAbbreviatedPath": "\/images\/logos\/logo-technarte.jpg",
 		"outputAbbreviatedPath": "\/images\/logos\/logo-technarte.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -595,7 +618,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 13662,
+		"initialSize": 31543,
 		"inputAbbreviatedPath": "\/images\/logos\/logo-VA.jpg",
 		"outputAbbreviatedPath": "\/images\/logos\/logo-VA.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -606,7 +629,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 14855,
+		"initialSize": 24992,
 		"inputAbbreviatedPath": "\/images\/logos\/logo-wired-italia.jpg",
 		"outputAbbreviatedPath": "\/images\/logos\/logo-wired-italia.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -999,6 +1022,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/purecss.io-horizontal-to-vertical-menu.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/purecss.io-horizontal-to-vertical-menu.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/README.md": {
 		"criticStyle": 0,
 		"enableFootnotes": 1,
@@ -1035,6 +1067,15 @@
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
+		},
+	"\/sensors-panel.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/sensors-panel.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/textures\/colorMap_original.jpg": {
 		"fileType": 16384,

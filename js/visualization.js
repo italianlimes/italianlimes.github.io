@@ -4,7 +4,7 @@
  * https://github.com/italianlimes
  *
  */
-var imgResolution = Math.max(128, Math.min(256, Math.pow(2, Math.floor(Math.log2(window.innerWidth / 4)))));
+var imgResolution = Math.max(128, Math.min(256, Math.pow(2, Math.floor(Math.log2(window.innerWidth / 6)))));
 var borderGeometry = new THREE.BufferGeometry();
 var clock = new THREE.Clock();
 var raycaster = new THREE.Raycaster();
@@ -81,13 +81,15 @@ function init() {
     scene = new THREE.Scene();
     displacementAlpha = 1;
     //RENDERER
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
     //renderer.setClearColor(0x000000, 1.0);
     renderer.setClearColor(0x444444);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-    renderer.domElement.style.display='none';
+    renderer.domElement.style.display = 'none';
     scene.position.set(-imgResolution * 0.05, -imgResolution * 0.25, imgResolution * 0.13);
 
     //CAMERA
@@ -100,7 +102,7 @@ function init() {
     //camera.lookAt(new THREE.Vector3(0,0,0));
     orbit.zoomSpeed = 0.05;
     orbit.minDistance = 10;
-    orbit.maxDistance = 200;
+    orbit.maxDistance = imgResolution*0.75;
     orbit.rotationSpeed = 0.1;
     orbit.rotateUp(-1.28);
     orbit.rotateLeft(-0.8);
@@ -141,8 +143,14 @@ function init() {
                 //  window.addEventListener( 'click', onMouseClick, false );
                 $(window).bind("tap", onMouseClick);
                 $("canvas").bind("click", onMouseClick);
-                $("canvas").fadeIn();
+                $('#side-menu-borders').on('click', function(event){
+                  showView(1);
+                });
+                $('#side-menu-sensors').on('click', function(event){
+                  showView(0);
+                });
                 render();
+                $("canvas").fadeIn();
             });
         });
     });
@@ -524,7 +532,6 @@ function render() {
     var maxDis = Math.max(Math.abs(orbit.getPolarAngle()), Math.abs(orbit.getAzimuthalAngle()));
     var yAlpha = Math.abs(camera.position.y - 0.5 * imgResolution);
     if (animating) {
-        orbit.autoRotate = false;
         if (!animationFinished) {
             var r = 0.015;
             if (orbit.getAzimuthalAngle() > 0.01) {
@@ -552,7 +559,10 @@ function render() {
                 animationFinished = true;
 
         }
-        var t = Math.max(0, Math.min(1, maxDis*3 - 0.1)); //Math.max(0.0001,1-Math.max(Math.min(clock.getElapsedTime()-delay,2.0),0)/1.0)
+        var t = Math.max(0, Math.min(1, maxDis * 2 - 0.1)); //Math.max(0.0001,1-Math.max(Math.min(clock.getElapsedTime()-delay,2.0),0)/1.0)
+        if (animationFinished)
+            t = Math.max(0, Math.min(1, maxDis * 12 - 0.2));
+        //console.log(t);
         mesh.material.transparent = true;
         mesh.material.opacity = t;
         //mesh.material.opacity=Math.max(0.0000,1-Math.max(Math.min(clock.getElapsedTime()-delay,3.0),0)/3.0);
@@ -577,7 +587,7 @@ function render() {
             orbit.autoRotate = true;
         }
     }
-    var t = Math.min(0.99, Math.max(0.15, Math.abs(Math.sin(clock.getElapsedTime() * 0.2 + 0.3))*1.5 - 0.2));
+    var t = Math.min(0.99, Math.max(0.15, Math.abs(Math.sin(clock.getElapsedTime() * 0.2 + 0.3)) * 1.5 - 0.2));
 
     if (parameters.animate || t < 0.95) {
         scene.getObjectByName('similaunMesh').material.color = new THREE.Color(t, t, t);
@@ -645,15 +655,15 @@ function onMouseMove(event) {
     for (var v = 0; v < sensors.length; v++)
         for (var q = 0; q < sensors[v].length; q++)
             sensors[v][q].material.color.set(0xffffff);
-    orbit.autoRotate = true;
+    if (!animating) orbit.autoRotate = true;
     parameters.animate = true;
     var label = document.getElementById('label');
-    $("#label").css("display","none");
+    $("#label").css("display", "none");
     for (var v = 0; v < sensors.length; v++) {
         var intersects = raycaster.intersectObjects(sensors[v]);
         for (var t = 0; t < intersects.length; t++) {
             var index = intersects[t].object.sensor_id;
-            $("#label").css("display","block");
+            $("#label").css("display", "block");
             $("#label").html(coordinates[index]);
             intersects[t].object.material.color = new THREE.Color(0xff0000);
             orbit.autoRotate = false;
@@ -663,14 +673,23 @@ function onMouseMove(event) {
 }
 
 function onMouseClick(event) {
-    //if(!parameters.animate)startAnimation();
-    if (!parameters.animate) {
+    if (!parameters.animate) showView(1);
+    else showView(0);
+}
+
+function showView(i) {
+    if (i == 0) {
+        console.log("hello");
+        orbit.autoRotate = true;
+        orbit.enableZoom = true;
+    }
+    if (i == 1) {
         orbit.autoRotate = false;
         parameters.animate = false;
+        orbit.enableZoom = false;
         animating = true;
     }
 }
-
 
 function updateMesh() {
     var vertices = similaunGeometry.attributes.position.array;

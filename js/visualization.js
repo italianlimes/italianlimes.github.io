@@ -81,7 +81,7 @@ function init() {
     scene = new THREE.Scene();
     displacementAlpha = 1;
     //RENDERER
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer({ antialias: true });
     //renderer.setClearColor(0x000000, 1.0);
     renderer.setClearColor(0x444444);
     renderer.setPixelRatio(window.devicePixelRatio);

@@ -144,10 +144,10 @@ function init() {
                 $(window).bind("tap", onMouseClick);
                 $("canvas").bind("click", onMouseClick);
                 $('#side-menu-borders').on('click', function(event){
-                  showView(1);
+                  showView(0);
                 });
                 $('#side-menu-sensors').on('click', function(event){
-                  showView(0);
+                  showView(1);
                 });
                 render();
                 $("canvas").fadeIn();

@@ -668,7 +668,8 @@ function onMouseMove(event) {
             var index = intersects[t].object.sensor_id;
             $("#label").css("display", "block");
             $("#label").html(coordinates[index]);
-            intersects[t].object.material.color = new THREE.Color(0xff0000);
+            //intersects[t].object.material.color = new THREE.Color(0xff0000);
+            intersects[t].object.material.color = new THREE.Color(0x5EC8D8); // $il-blue defined in _variables.scss
             orbit.autoRotate = false;
             parameters.animate = false;
         }

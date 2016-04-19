@@ -889,6 +889,7 @@ html, body {
   white-space: nowrap; }
   .panel-close::before, .panel-close::after {
     /* close icon created in CSS */
+    content: "";
     position: absolute;
     top: 22px;
     left: 20px;

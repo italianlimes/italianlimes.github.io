@@ -70,8 +70,8 @@ var parameters = new function() {
     this.fogColor = this.bottomColor;
     this.animate = true;
     this.autorotate = true;
-    this.sensorsColor = "#ff4444";
-    this.borderColor = "#ffffff";
+    this.sensorsColor = "#5EC8D8"; // $il-blue defined in _variables.scss
+    this.borderColor = "#E5E5E5";
     this.wireframeLineWidth = 0.8;
     this.borderLineWidth = 2;
 };
@@ -468,7 +468,8 @@ function addBorder(callback) {
             var borderVts = new Float32Array(vertexPositions.length * 3); // three components per vertex
             oldBorderGeometry.addAttribute('position', new THREE.BufferAttribute(borderVts, 3));
             var material = new THREE.LineBasicMaterial({
-                color: new THREE.Color(0x4444ff),
+                //color: new THREE.Color(0x4444ff),
+                color: new THREE.Color(0x5EC8D8), // $il-blue defined in _variables.scss
                 fog: false,
                 linewidth: parameters.borderLineWidth,
                 transparent: true,

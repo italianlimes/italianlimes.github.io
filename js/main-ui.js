@@ -6,7 +6,10 @@ jQuery(document).ready(function($){
     $('#explore').on('click', function(event){
         event.preventDefault();
         $("#vidtop-content").fadeOut(1000);
-        $(".overlay").fadeOut(3000);
+        $(".overlay").fadeOut(3000,function(){
+          $('iframe').attr('src', '');
+          $(".overlay").remove();
+        });
     });
 
 // RESPONSIVE NAVIGATION //

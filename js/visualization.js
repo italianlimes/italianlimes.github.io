@@ -274,7 +274,8 @@ function addSky() {
         },
         offset: {
             type: "f",
-            value: 100
+            //value: 100
+            value: 400
         },
         exponent: {
             type: "f",
@@ -282,7 +283,8 @@ function addSky() {
         },
         opacity: {
             type: "f",
-            value: 1.0
+            //value: 1.0
+            value: 10.0
         }
     };
     scene.fog = new THREE.Fog(parameters.fogColor, parameters.fogNear, parameters.fogFar);

@@ -435,7 +435,7 @@ function addSensors(callback) {
     callback();
 }
 
-var p2014, p1920;
+var p2016, p1920;
 
 function addBorder(callback) {
     $.getJSON("borders/newBorder_256.json", function(vertexPositions) {
@@ -453,15 +453,15 @@ function addBorder(callback) {
         updateBorderPosition(borderPoints, borderGeometry, 0, 0, worldWidth - 1.0, worldHeight - 1.0);
 
         var index = Math.round(vertexPositions.length * 0.23) * 3.0;
-        p2014 = new THREE.Mesh(new THREE.BoxGeometry(0.001, 0.001, 0.001), new THREE.MeshBasicMaterial({
+        p2016 = new THREE.Mesh(new THREE.BoxGeometry(0.001, 0.001, 0.001), new THREE.MeshBasicMaterial({
             color: 0x00ff00,
             transparent: true,
             opacity: 0
         }));
-        p2014.position.set(borderGeometry.attributes.position.array[index * 3.0],
+        p2016.position.set(borderGeometry.attributes.position.array[index * 3.0],
             borderGeometry.attributes.position.array[index * 3.0 + 1],
             borderGeometry.attributes.position.array[index * 3.0 + 2]);
-        scene.add(p2014);
+        scene.add(p2016);
 
         $.getJSON("borders/oldBorder_256.json", function(vertexPositions) {
             var oldBorderGeometry = new THREE.BufferGeometry();
@@ -576,14 +576,14 @@ function render() {
         scene.getObjectByName('sky').material.transparent = true;
         scene.getObjectByName('sky').material.uniforms.opacity.value = Math.max(t, 0);
         $("#label_1920").css('opacity', 1 - Math.max(t, 0));
-        $("#label_2014").css('opacity', 1 - Math.max(t, 0));
+        $("#label_2016").css('opacity', 1 - Math.max(t, 0));
         $("#label").css('opacity', 1 - Math.max(t, 0));
         var vector = toScreenPosition(p1920);
         $("#label_1920").css('top', vector.y - $("#label_1920").height() * 1.2);
         $("#label_1920").css('left', vector.x);
-        vector = toScreenPosition(p2014);
-        $("#label_2014").css('top', vector.y - $("#label_2014").height() * 1.2);
-        $("#label_2014").css('left', vector.x);
+        vector = toScreenPosition(p2016);
+        $("#label_2016").css('top', vector.y - $("#label_2016").height() * 1.2);
+        $("#label_2016").css('left', vector.x);
         if (animationFinished && maxDis > 0.01 && t == 1) {
             animationFinished = false;
             animating = false;

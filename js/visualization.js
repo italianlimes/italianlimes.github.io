@@ -680,7 +680,6 @@ function onMouseClick(event) {
 
 function showView(i) {
     if (i == 0) {
-        console.log("hello");
         orbit.autoRotate = true;
         orbit.enableZoom = true;
         $("#sensors").removeClass('is-visible');

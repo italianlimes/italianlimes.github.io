@@ -509,6 +509,8 @@ body {
   font-size: 100%;
   font-family: "Aileron", helvetica, sans-serif;
   font-weight: 400;
+  font--webkit-font-smoothing: antialiased;
+  font--moz-osx-font-smoothing: grayscale;
   color: #141418;
   background: #fafafa; }
 
@@ -520,7 +522,9 @@ body, html, button, input, select, textarea,
   color: #141418; }
 
 b {
-  font-weight: 700; }
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 h1 {
   font-size: 50px;
@@ -720,6 +724,28 @@ html, body {
 @media only screen and (min-width: 420px) {
   .vid-info .acronym {
     display: none; } }
+#borders {
+  position: absolute;
+  max-width: 460px;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  height: auto; }
+  @media only screen and (min-width: 768px) {
+    #borders {
+      top: 80px;
+      padding: 25px;
+      height: 200px; } }
+  #borders p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+    line-height: 1.25;
+    color: #fafafa; }
+    @media only screen and (min-width: 768px) {
+      #borders p {
+        font-size: 24px; } }
+
 .main-content .btn {
   position: relative;
   display: inline-block;
@@ -754,7 +780,6 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent;
     cursor: pointer;
     -webkit-transition: background 0.3s 0.3s;
     -moz-transition: background 0.3s 0.3s;
@@ -889,7 +914,6 @@ html, body {
   white-space: nowrap; }
   .panel-close::before, .panel-close::after {
     /* close icon created in CSS */
-    content: "";
     position: absolute;
     top: 22px;
     left: 20px;

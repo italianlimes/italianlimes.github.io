@@ -686,12 +686,14 @@ function showView(i) {
         console.log("hello");
         orbit.autoRotate = true;
         orbit.enableZoom = true;
+        $("#borders").fadeIn(1000);
     }
     if (i == 1) {
         orbit.autoRotate = false;
         parameters.animate = false;
         orbit.enableZoom = false;
         animating = true;
+        $("#borders").fadeOut(1000);
     }
 }
 

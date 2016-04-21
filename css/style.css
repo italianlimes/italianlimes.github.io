@@ -915,6 +915,7 @@ html, body {
   .panel-close::before, .panel-close::after {
     /* close icon created in CSS */
     position: absolute;
+    content: "";
     top: 22px;
     left: 20px;
     height: 3px;

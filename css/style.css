@@ -558,7 +558,10 @@ p {
     line-height: 1.5; } }
 a {
   color: #5EC8D8;
-  text-decoration: none; }
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s; }
   a:hover {
     color: #2997a7; }
   a:focus {
@@ -577,12 +580,6 @@ Main components
 -------------------------------- */
 html, body {
   height: 100%; }
-
-#logo {
-  width: 180px;
-  height: auto; }
-  #logo:hover {
-    opacity: 0.7; }
 
 .cover {
   width: 100%;
@@ -1264,14 +1261,15 @@ ul.logo {
 .custom-wrapper {
   position: absolute;
   width: 100%;
-  height: 3.0em;
+  height: 5.0em;
   overflow: hidden;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s; }
 
 .custom-wrapper.open {
-  height: 18em;
+  height: 100%;
+  z-index: 1;
   background-color: #5EC8D8; }
   .custom-wrapper.open a {
     color: #fafafa; }
@@ -1280,22 +1278,39 @@ ul.logo {
 
 .pure-menu a {
   color: #fafafa; }
-  .pure-menu a:hover {
-    color: #5EC8D8; }
+
+#logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 16px; }
 
 .pure-menu-heading {
   display: inline-block;
-  padding: 1em 1em; }
+  padding: 1.5em 1.5em; }
+  .pure-menu-heading h1 {
+    font-size: 16px;
+    display: inline-block;
+    float: right;
+    padding-top: 0.5em; }
+  .pure-menu-heading:hover {
+    opacity: 0.7;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s; }
 
 .pure-menu-horizontal {
   width: 100%; }
 
 .pure-menu-item {
   display: inline-block; }
+  .pure-menu-item:last-child {
+    padding-right: 1em; }
+  .pure-menu-item a:hover {
+    color: rgba(250, 250, 250, 0.7); }
 
 .pure-menu-link {
   display: inline-block;
-  padding: 1em 1em 0.5em 1em; }
+  padding: 2em 1em 0.5em 1em; }
 
 .menu-right {
   width: 440px;

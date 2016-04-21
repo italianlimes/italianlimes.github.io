@@ -97,6 +97,7 @@ a {
 		box-shadow: none;
 		border-color: none;
 	}
+	@include transition(all .3s);
 }
 
 img {
@@ -112,14 +113,6 @@ Main components
 
 html, body {
 	height: 100%;
-}
-
-#logo {
-	width: 180px;
-	height: auto;
-	&:hover {
-		opacity: 0.7;
-	}
 }
 
 // 100% height row section
@@ -894,13 +887,14 @@ ul.logo {
 .custom-wrapper {
 	position: absolute;
 	width: 100%;
-    height: 3.0em;
+    height: 5.0em;
     overflow: hidden;
     @include transition(all .5s);
 }
 
 .custom-wrapper.open {
-    height: 18em;
+    height: 100%;
+    z-index: 1;
     background-color: $il-blue;
 	a {
 		color: $il-white;
@@ -912,14 +906,28 @@ ul.logo {
 .pure-menu {
 	a {
 		color: $il-white;
-		&:hover {
-		color: ($il-blue);}
 	}
+}
+
+#logo {
+	width: 30px;
+	height: 30px;
+	margin-right: 16px;
 }
 
 .pure-menu-heading {
 	display: inline-block;
-	padding: 1em 1em;
+	padding: 1.5em 1.5em;
+	h1 {
+		font-size: 16px;
+		display: inline-block;
+		float: right;
+		padding-top: 0.5em;
+	}
+	&:hover {
+		opacity: 0.7;
+	@include transition(all .5s);
+	}
 }
 
 .pure-menu-horizontal {
@@ -928,11 +936,16 @@ ul.logo {
 
 .pure-menu-item {
 	display: inline-block;
+	&:last-child {padding-right: 1em; }
+	a {
+		&:hover {
+		color: rgba($il-white, 0.7);}
+	}
 }
 
 .pure-menu-link {
 	display: inline-block;
-	padding: 1em 1em 0.5em 1em;
+	padding: 2em 1em 0.5em 1em;
 }
 
 .menu-right {

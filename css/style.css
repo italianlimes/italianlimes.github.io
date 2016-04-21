@@ -725,12 +725,21 @@ html, body {
   .vid-info .acronym {
     display: none; } }
 #borders {
+  visibility: hidden;
   position: absolute;
   max-width: 460px;
   right: 0;
   bottom: 0;
   padding: 20px;
-  height: auto; }
+  height: auto;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s; }
+  #borders.is-visible {
+    visibility: visible;
+    -webkit-transition: visibility 0s 0.5s;
+    -moz-transition: visibility 0s 0.5s;
+    transition: visibility 0s 0.5s; }
   @media only screen and (min-width: 768px) {
     #borders {
       top: 80px;
@@ -745,6 +754,41 @@ html, body {
     @media only screen and (min-width: 768px) {
       #borders p {
         font-size: 24px; } }
+
+#sensors {
+  visibility: hidden;
+  position: absolute;
+  margin-top: 90vh;
+  height: 400px;
+  width: 100%;
+  height: 300px;
+  background-color: #fafafa;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s; }
+  #sensors.is-visible {
+    visibility: visible;
+    -webkit-transition: visibility 1s 0s;
+    -moz-transition: visibility 1s 0s;
+    transition: visibility 1s 0s; }
+  @media only screen and (min-width: 768px) {
+    #sensors {
+      position: absolute;
+      margin-top: 0;
+      max-width: 460px;
+      top: 0;
+      right: 0;
+      height: 100%; } }
+  #sensors .sensors-content {
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 80px;
+    overflow: auto; }
+    #sensors .sensors-content h3 {
+      padding-bottom: 20px; }
+    #sensors .sensors-content img {
+      padding: 20px 0px; }
 
 .main-content .btn {
   position: relative;
@@ -852,8 +896,8 @@ html, body {
 .panel-header {
   position: fixed;
   width: 90%;
-  height: 50px;
-  line-height: 50px;
+  height: 60px;
+  line-height: 60px;
   background: rgba(250, 250, 250, 0.96);
   z-index: 2;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
@@ -876,12 +920,12 @@ html, body {
         display: block;
         color: #141418;
         text-align: center;
-        padding: 0px 20px;
+        padding-right: 20px;
         text-decoration: none; }
   .panel-header .active {
     color: #5EC8D8; }
   .from-right .panel-header, .from-left .panel-header {
-    top: -50px; }
+    top: -60px; }
   .from-right .panel-header {
     right: 0; }
   .from-left .panel-header {
@@ -905,7 +949,7 @@ html, body {
   position: absolute;
   top: 0;
   right: 0;
-  height: 100%;
+  height: 60px;
   width: 60px;
   /* image replacement */
   display: inline-block;
@@ -916,7 +960,7 @@ html, body {
     /* close icon created in CSS */
     position: absolute;
     content: "";
-    top: 22px;
+    top: 28px;
     left: 20px;
     height: 3px;
     width: 20px;
@@ -936,28 +980,14 @@ html, body {
     -ms-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg); }
-  .no-touch .panel-close:hover {
-    background-color: #fafafa; }
-    .no-touch .panel-close:hover::before, .no-touch .panel-close:hover::after {
-      background-color: #5EC8D8;
-      -webkit-transition-property: -webkit-transform;
-      -moz-transition-property: -moz-transform;
-      transition-property: transform;
-      -webkit-transition-duration: 0.3s;
-      -moz-transition-duration: 0.3s;
-      transition-duration: 0.3s; }
-    .no-touch .panel-close:hover::before {
-      -webkit-transform: rotate(220deg);
-      -moz-transform: rotate(220deg);
-      -ms-transform: rotate(220deg);
-      -o-transform: rotate(220deg);
-      transform: rotate(220deg); }
-    .no-touch .panel-close:hover::after {
-      -webkit-transform: rotate(135deg);
-      -moz-transform: rotate(135deg);
-      -ms-transform: rotate(135deg);
-      -o-transform: rotate(135deg);
-      transform: rotate(135deg); }
+  .no-touch .panel-close:hover::before, .no-touch .panel-close:hover::after {
+    background-color: #5EC8D8;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s; }
 
 .panel-container {
   position: fixed;

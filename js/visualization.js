@@ -143,11 +143,8 @@ function init() {
                 //  window.addEventListener( 'click', onMouseClick, false );
                 $(window).bind("tap", onMouseClick);
                 $("canvas").bind("click", onMouseClick);
-                $('#side-menu-borders').on('click', function(event){
+                $('#sensors-close').on('click', function(event){
                   showView(0);
-                });
-                $('#side-menu-sensors').on('click', function(event){
-                  showView(1);
                 });
                 render();
                 $("canvas").fadeIn();
@@ -686,14 +683,16 @@ function showView(i) {
         console.log("hello");
         orbit.autoRotate = true;
         orbit.enableZoom = true;
-        $("#borders").fadeIn(1000);
+        $("#sensors").removeClass('is-visible');
+        $("#borders").addClass('is-visible');
     }
     if (i == 1) {
         orbit.autoRotate = false;
         parameters.animate = false;
         orbit.enableZoom = false;
         animating = true;
-        $("#borders").fadeOut(1000);
+        $("#borders").removeClass("is-visible");
+        $("#sensors").addClass('is-visible');
     }
 }
 

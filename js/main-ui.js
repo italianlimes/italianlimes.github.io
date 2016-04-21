@@ -61,7 +61,7 @@ jQuery(document).ready(function($){
 		$('.panel').addClass('is-visible');
         $(".panel").load("about-panel.html");
 	});
-    $('#side-menu-borders').on('click', function(event){
+    /*$('#side-menu-borders').on('click', function(event){
         event.preventDefault();
         $('.panel').addClass('is-visible');
         $(".panel").load("borders-panel.html");
@@ -70,7 +70,7 @@ jQuery(document).ready(function($){
         event.preventDefault();
         $('.panel').addClass('is-visible');
         $(".panel").load("sensors-panel.html");
-    });
+    });*/
 
 	//close the side panel
 	$('.panel').on('click', function(event){

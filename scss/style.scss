@@ -292,12 +292,20 @@ html, body {
 // borders
 
 #borders {
+	visibility: hidden;
 	position: absolute;
 	max-width: 460px;
 	right: 0;
 	bottom: 0;
 	padding: 20px;
 	height: auto;
+	@include transition(all .5s);
+
+	&.is-visible {
+		visibility: visible;
+		@include transition(visibility 0s 0.5s);
+	}
+
 	@include MQ(M) {
 		top: 80px;
 		padding: 25px;
@@ -313,9 +321,47 @@ html, body {
 			font-size: (24px);
 			}
 	}
-
 }
 
+// sensors
+
+#sensors {
+	visibility: hidden;
+	position: absolute;
+	margin-top: 90vh;
+	height: 400px;
+	width: 100%;
+	height: 300px;
+	background-color: $il-white;
+	@include transition(all .5s);
+
+	&.is-visible {
+		visibility: visible;
+		@include transition(visibility 1s 0s);
+	}
+
+	@include MQ (M) {
+		position: absolute;
+		margin-top: 0;
+		max-width: 460px;
+		top: 0;
+		right: 0;
+		height: 100%;
+	}
+	.sensors-content {
+		top: 0;
+		left: 0;
+		height: 100%;
+		padding: 80px;
+		overflow: auto;
+		h3 {
+			padding-bottom: 20px;
+		}
+		img {
+			padding: 20px 0px;
+		}
+	}
+}
 
 // content
 
@@ -403,8 +449,8 @@ html, body {
 .panel-header {
 	position: fixed;
 	width: $panel-width-S; // variables inside partials > _variables.scss
-	height: 50px;
-	line-height: 50px;
+	height: 60px;
+	line-height: 60px;
 	background: rgba($il-white, .96);
 	z-index: 2;
 	box-shadow: 0 1px 1px rgba(#000, .08);
@@ -428,7 +474,7 @@ html, body {
 				display: block;
 				color: $il-black;
 				text-align: center;
-				padding: 0px 20px;
+				padding-right: 20px;
 				text-decoration: none;
 			}
 		}
@@ -438,7 +484,7 @@ html, body {
 	}
 
 	.from-right &, .from-left & {
-		top: -50px;
+		top: -60px;
 	}
 
 	.from-right & {
@@ -471,7 +517,8 @@ html, body {
 	position: absolute;
 	top: 0;
 	right: 0;
-	height: 100%;
+	//height: 100%;
+	height: 60px;
 	width: 60px;
 
 	/* image replacement */
@@ -484,7 +531,7 @@ html, body {
 		/* close icon created in CSS */
 		position: absolute;
 	    content: "";
-		top: 22px;
+		top: 28px;
 		left: 20px;
 		height: 3px;
 		width: 20px;
@@ -503,7 +550,7 @@ html, body {
 	}
 
 	.no-touch &:hover {
-		background-color: $il-white;
+		//background-color: $il-white;
 
 		&::before, &::after {
 			background-color: $il-blue;
@@ -512,11 +559,11 @@ html, body {
 		}
 
 		&::before {
-			@include transform(rotate(220deg));
+			//@include transform(rotate(220deg));
 		}
 
 		&::after {
-			@include transform(rotate(135deg));
+			//@include transform(rotate(135deg));
 		}
 	}
 }

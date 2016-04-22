@@ -211,7 +211,7 @@ html, body {
 
 * { box-sizing: border-box; }
 .video-background {
-	background: $il-black;
+	background: $il-white;
 	position: fixed;
 	top: 0; right: 0; bottom: 0; left: 0;
 	z-index: -99;
@@ -232,7 +232,8 @@ html, body {
 .vid-info {
 	width: 100%;
 	max-width: 70rem;
-	color: $il-white;
+	//max-width: 52rem;
+	color: #444;
 	padding: 2rem;
 	@include MQ(M) {
 		padding: 4rem 4rem 4rem 5rem;
@@ -242,17 +243,24 @@ html, body {
 		font-weight: 300;
 		line-height: 1.2;
 		letter-spacing: 0.1rem;
-		font-size: 2rem;
+		//font-size: 2rem;
+		font-size: 1.75rem;
 		@include MQ(S) {
-			font-size: 3rem;
+			//font-size: 3rem;
+			font-size: 2.5rem;
+			max-width: 40rem;
 		}
 		@include MQ(M) {
-			font-size: 3.75rem;
-			max-width: 50rem;
+			//font-size: 3.75rem;
+			font-size: 2.75rem;
+			//max-width: 50rem;
+			max-width: 40rem;
 		}
 		@include MQ(L) {
-			font-size: 4.5rem;
-			max-width: 60rem;
+			//font-size: 4.5rem;
+			font-size: 3.5rem;
+			//max-width: 60rem;
+			max-width: 45rem;
 		}
 		b {font-weight: 700;}
 	}

@@ -22,34 +22,31 @@ var interpolationIndexes = new Array();
 var animating = false;
 
 var coordinates = [
-    "Sensor 1<br/>Latitude: 46.76696678<br/>Longitude: 10.89216134<br/>Altitude: 3424.14m",
-    "Sensor 3<br/>Latitude: 46.76625583<br/>Longitude: 10.89358736<br/>Altitude: 3422.61m",
-    "Sensor 6<br/>Latitude: 46.76548033<br/>Longitude: 10.89457847<br/>Altitude: 3407.89m",
-    "Sensor 10<br/>Latitude: 46.76469523<br/>Longitude: 10.89566494<br/>Altitude: 3392.64m",
-    "Sensor 15<br/>Latitude: 46.76386116<br/>Longitude: 10.89681896<br/>Altitude: 3364.88m",
-    "Sensor 2<br/>Latitude: 46.76628987<br/>Longitude: 10.89112327<br/>Altitude: 3394.63m",
-    "Sensor 5<br/>Latitude: 46.76546685<br/>Longitude: 10.89230318<br/>Altitude: 3397.21m",
-    "Sensor 9<br/>Latitude: 46.76470423<br/>Longitude: 10.89343579<br/>Altitude: 3395.82m",
-    "Sensor 14<br/>Latitude: 46.76389149<br/>Longitude: 10.89454863<br/>Altitude: 3388.76m",
-    "Sensor 19<br/>Latitude: 46.76308884<br/>Longitude: 10.89566521<br/>Altitude: 3373.32m",
-    "Sensor 4<br/>Latitude: 46.76552945<br/>Longitude: 10.88992797<br/>Altitude: 3379.99m",
-    "Sensor 8<br/>Latitude: 46.76474691<br/>Longitude: 10.89107509<br/>Altitude: 3382.36m",
-    "Sensor 13<br/>Latitude: 46.76384316<br/>Longitude: 10.89213326<br/>Altitude: 3383.26m",
-    "Sensor 18<br/>Latitude: 46.76313017<br/>Longitude: 10.89336190<br/>Altitude: 3383.00m",
-    "Sensor 22<br/>Latitude: 46.76232738<br/>Longitude: 10.89445073<br/>Altitude: 3376.59m",
-    "Sensor 7<br/>Latitude: 46.76482551<br/>Longitude: 10.88883534<br/>Altitude: 3375.49m",
-    "Sensor 12<br/>Latitude: 46.76396784<br/>Longitude: 10.89000798<br/>Altitude: 3375.94m",
-    "Sensor 17<br/>Latitude: 46.76316205<br/>Longitude: 10.89104280<br/>Altitude: 3374.25m",
-    "Sensor 21<br/>Latitude: 46.76232778<br/>Longitude: 10.89220759<br/>Altitude: 3372.32m",
-    "Sensor 24<br/>Latitude: 46.76151987<br/>Longitude: 10.89328053<br/>Altitude: 3370.35m",
-    "Sensor 11<br/>Latitude: 46.76400705<br/>Longitude: 10.88761166<br/>Altitude: 3371.88m",
-    "Sensor 16<br/>Latitude: 46.76318399<br/>Longitude: 10.88879436<br/>Altitude: 3367.83m",
-    "Sensor 20<br/>Latitude: 46.76223966<br/>Longitude: 10.88991538<br/>Altitude: 3364.17m",
-    "Sensor 23<br/>Latitude: 46.76154790<br/>Longitude: 10.89103306<br/>Altitude: 3360.68m",
-    "Sensor 25<br/>Latitude: 46.76072612<br/>Longitude: 10.89202310<br/>Altitude: 3355.20m",
-    "Sensor 25<br/>Latitude: 46.76072612<br/>Longitude: 10.89202310<br/>Altitude: 3355.20m",
-    "Sensor 26<br/>Latitude: 46.76402293<br/>Longitude: 10.89198858<br/>Altitude: 3384.38m"
-];
+  {id:1, latitude: "46.76696678", longitude: "10.89216134", altitude: 3424.14},
+  {id:3, latitude: "46.76625583", longitude: "10.89358736", altitude: 3422.61},
+  {id:6, latitude: "46.76548033", longitude: "10.89457847", altitude: 3407.89},
+  {id:10, latitude: "46.76469523", longitude: "10.89566494", altitude: 3392.64},
+  {id:15, latitude: "46.76386116", longitude: "10.89681896", altitude: 3364.88},
+  {id:2, latitude: "46.76628987", longitude: "10.89112327", altitude: 3394.63},
+  {id:5, latitude: "46.76546685", longitude: "10.89230318", altitude: 3397.21},
+  {id:9, latitude: "46.76470423", longitude: "10.89343579", altitude: 3395.82},
+  {id:14, latitude: "46.76389149", longitude: "10.89454863", altitude: 3388.76},
+  {id:19, latitude: "46.76308884", longitude: "10.89566521", altitude: 3373.32},
+  {id:4, latitude: "46.76552945", longitude: "10.88992797", altitude: 3379.99},
+  {id:8, latitude: "46.76474691", longitude: "10.89107509", altitude: 3382.36},
+  {id:13, latitude: "46.76384316", longitude: "10.89213326", altitude: 3383.26},
+  {id:18, latitude: "46.76313017", longitude: "10.89336190", altitude: 3383.00},
+  {id:22, latitude: "46.76232738", longitude: "10.89445073", altitude: 3376.59},
+  {id:7, latitude: "46.76482551", longitude: "10.88883534", altitude: 3375.49},
+  {id:12, latitude: "46.76396784", longitude: "10.89000798", altitude: 3375.94},
+  {id:17, latitude: "46.76316205", longitude: "10.89104280", altitude: 3374.25},
+  {id:21, latitude: "46.76232778", longitude: "10.89220759", altitude: 3372.32},
+  {id:24, latitude: "46.76151987", longitude: "10.89328053", altitude: 3370.35},
+  {id:11, latitude: "46.76400705", longitude: "10.88761166", altitude: 3371.88},
+  {id:16, latitude: "46.76318399", longitude: "10.88879436", altitude: 3367.83},
+  {id:20, latitude: "46.76223966", longitude: "10.88991538", altitude: 3364.17},
+  {id:23, latitude: "46.76154790", longitude: "10.89103306", altitude: 3360.68},
+  {id:25, latitude: "46.76072612", longitude: "10.89202310", altitude: 3355.20}];
 
 //CONTROLS
 console.log(window.innerWidth);
@@ -664,7 +661,11 @@ function onMouseMove(event) {
         for (var t = 0; t < intersects.length; t++) {
             var index = intersects[t].object.sensor_id;
             $("#label").css("display", "block");
-            $("#label").html(coordinates[index]);
+            $("#label").html("<span class='label-title'>Sensor "+coordinates[index].id+"</span><br/>"+
+                             "<span class='label-title'>Latitude: </span><span class='label-value'>"+convertDDToDMS(coordinates[index].latitude)+"</span><br/>"+
+                             "<span class='label-title'>Longitude: </span><span class='label-value'>"+convertDDToDMS(coordinates[index].longitude,true)+"</span><br/>"+
+                             "<span class='label-title'>Altitude: </span><span class='label-value'>"+coordinates[index].altitude+"</span>"
+                           );
             intersects[t].object.material.color = new THREE.Color(0x5EC8D8); // $il-blue defined in _variables.scss
             orbit.autoRotate = false;
             parameters.animate = false;
@@ -759,3 +760,11 @@ function toScreenPosition(obj) {
         y: vector.y
     };
 };
+
+function convertDDToDMS(D, lng){
+    var  dir = D<0?lng?'W':'S':lng?'E':'N',
+        deg = 0|(D<0?D=-D:D),
+        min = 0|D%1*60,
+        sec =(0|D*60%1*6000)/100;
+        return deg+"º "+min+'\' '+sec+'\" '+dir;
+}

@@ -80,6 +80,11 @@ jQuery(document).ready(function($){
 		}
 	});
 
+// HIDE COVER VIDEO ON MOBILE //
+
+    if($(window).width()<440){
+        $('.video-foreground').remove();
+    }
 
 // BASTA //
 

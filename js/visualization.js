@@ -661,10 +661,10 @@ function onMouseMove(event) {
         for (var t = 0; t < intersects.length; t++) {
             var index = intersects[t].object.sensor_id;
             $("#label").css("display", "block");
-            $("#label").html("<span class='label-title'>Sensor "+coordinates[index].id+"</span><br/>"+
-                             "<span class='label-title'>Latitude: </span><span class='label-value'>"+convertDDToDMS(coordinates[index].latitude)+"</span><br/>"+
-                             "<span class='label-title'>Longitude: </span><span class='label-value'>"+convertDDToDMS(coordinates[index].longitude,true)+"</span><br/>"+
-                             "<span class='label-title'>Altitude: </span><span class='label-value'>"+coordinates[index].altitude+"</span>"
+            $("#label").html("<span class='label-title'>Sensor</span><br><span class='label-value'>"+coordinates[index].id+"</span><br>"+
+                             "<span class='label-title'>Latitude<br></span><span class='label-value'>"+convertDDToDMS(coordinates[index].latitude)+"</span><br>"+
+                             "<span class='label-title'>Longitude<br></span><span class='label-value'>"+convertDDToDMS(coordinates[index].longitude,true)+"</span><br>"+
+                             "<span class='label-title'>Altitude<br></span><span class='label-value'>"+coordinates[index].altitude+"m</span>"
                            );
             intersects[t].object.material.color = new THREE.Color(0x5EC8D8); // $il-blue defined in _variables.scss
             orbit.autoRotate = false;

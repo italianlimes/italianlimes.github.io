@@ -339,6 +339,7 @@ function addSimilaunModel(callback) {
 function addSensors(callback) {
     sensors = new Array(5);
     displacements = new Array(7);
+    /*
     var circleGeometry = new THREE.BufferGeometry();;
     var circleRes = 15.0;
     var circleVertices = new Float32Array((circleRes + 1) * 3); // three components per vertex
@@ -353,7 +354,7 @@ function addSensors(callback) {
         fog: false,
         linewidth: 2
     });
-
+    */
 
     var indices = new Array();
     for (var x = 0; x < 7; x++) {
@@ -376,18 +377,18 @@ function addSensors(callback) {
     for (var x = 0; x < 5; x++) {
         sensors[x] = new Array(5);
         for (var y = 0; y < 5; y++) {
-            /*var material = new THREE.MeshBasicMaterial({fog:false,color: parameters.sensorsColor});
+           var material = new THREE.MeshBasicMaterial({fog:false,color: parameters.sensorsColor});
             var sphereGeom = new  THREE.SphereGeometry(worldWidth/250.0, 15,15);// Remove center vertex
             var mesh=new THREE.Mesh(sphereGeom, material);
-            */
+            mesh.scale.set(1,0.1,1);
+            /*
             var material = new THREE.LineBasicMaterial({
                 color: 0xffffff,
                 fog: false,
                 linewidth: 2
             });
-
-            sensors[x][y] = new THREE.Line(circleGeometry, material, THREE.LineStrip); ////
-
+            */
+            sensors[x][y] = mesh;//new THREE.Line(circleGeometry, material, THREE.LineStrip); ////
             sensors[x][y].position.set(displacements[x + 1][y + 1].x, displacements[x + 1][y + 1].y + 0.05, displacements[x + 1][y + 1].z);
             sensors[x][y].sensor_id = y * 5 + x;
             scene.add(sensors[x][y]);

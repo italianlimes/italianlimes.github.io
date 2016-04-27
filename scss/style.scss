@@ -113,6 +113,7 @@ Main components
 
 html, body {
 	height: 100%;
+	@include font-smoothing;
 }
 
 // 100% height row section
@@ -294,40 +295,108 @@ html, body {
 
 // borders
 
-#borders {
-	visibility: hidden;
+.narrative-panel {
 	position: absolute;
 	max-width: 460px;
 	right: 0;
 	bottom: 0;
 	padding: 20px;
 	height: auto;
-	@include transition(all .5s);
-
-	&.is-visible {
-		visibility: visible;
-		@include transition(visibility 0s 0.5s);
-	}
-
 	@include MQ(M) {
 		top: 80px;
 		padding: 25px;
 		height: 200px;
 	}
-	p {
-		font-size: (16px);
-		font-weight: 300;
+	h1 {
+		font-weight: 700;
 		letter-spacing: 0.05rem;
 		line-height: 1.25;
 		color: $il-white;
-		@include MQ(M) {
-			font-size: (24px);
+			font-size: 14px;
+		@include MQ(S) {
+			font-size: 18px;
 			}
+		@include MQ(M) {
+			font-size: 22px;
+			}
+	}
+	p {
+		font-weight: 400;
+		letter-spacing: 0.05rem;
+		line-height: 1.25;
+		color: $il-white;
+			font-size: 14px;
+		@include MQ(S) {
+			font-size: 18px;
+			}
+		@include MQ(M) {
+			font-size: 22px;
+			}
+	}
+	nav {
+		width: 100%;
+		height: 50px;
+		padding: 10px 0 0 0;
+		text-align: center;
+		font-size: 15px;
+	}
+	@include transition(all .5s);
+}
+
+.back {
+	border: 1px solid rgba($il-white, 0.8);
+	&:hover {border: 1px solid $il-white;}
+	border-radius: 100%;
+	font-size: 15px;
+	width: 40px;
+	height: 40px;
+	padding: 12px;
+	@include MQ(S) {padding: 9px;}
+	@include MQ(M) {padding: 7px;}
+	float:left;
+	cursor: pointer;
+}
+.next {
+	border: 1px solid rgba($il-white, 0.8);
+	&:hover {border: 1px solid $il-white;}
+	border-radius: 100%;
+	font-size: 15px;
+	width: 40px;
+	height: 40px;
+	padding: 12px;
+	@include MQ(S) {padding: 9px;}
+	@include MQ(M) {padding: 7px;}
+	float:right;
+	text-align: right;
+	cursor: pointer;
+}
+
+#narrative-1 {
+	visibility: hidden;
+	&.is-visible {
+		visibility: visible;
+		@include transition(visibility 0s 0.5s);
+	}
+}
+
+#narrative-2 {
+	visibility: hidden;
+	&.is-visible {
+		visibility: visible;
+		@include transition(visibility 0s 0.5s);
+	}
+}
+
+#narrative-3 {
+	visibility: hidden;
+	&.is-visible {
+		visibility: visible;
+		@include transition(visibility 0s 0.5s);
 	}
 }
 
 // sensors
-
+/*
 #sensors {
 	visibility: hidden;
 	position: absolute;
@@ -364,7 +433,7 @@ html, body {
 			padding: 20px 0px;
 		}
 	}
-}
+}*/
 
 // content
 

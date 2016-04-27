@@ -579,7 +579,9 @@ Main components
 
 -------------------------------- */
 html, body {
-  height: 100%; }
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 .cover {
   width: 100%;
@@ -731,8 +733,7 @@ html, body {
 @media only screen and (min-width: 420px) {
   .vid-info .acronym {
     display: none; } }
-#borders {
-  visibility: hidden;
+.narrative-panel {
   position: absolute;
   max-width: 460px;
   right: 0;
@@ -742,61 +743,141 @@ html, body {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s; }
-  #borders.is-visible {
+  @media only screen and (min-width: 768px) {
+    .narrative-panel {
+      top: 80px;
+      padding: 25px;
+      height: 200px; } }
+  .narrative-panel h1 {
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    line-height: 1.25;
+    color: #fafafa;
+    font-size: 14px; }
+    @media only screen and (min-width: 420px) {
+      .narrative-panel h1 {
+        font-size: 18px; } }
+    @media only screen and (min-width: 768px) {
+      .narrative-panel h1 {
+        font-size: 22px; } }
+  .narrative-panel p {
+    font-weight: 400;
+    letter-spacing: 0.05rem;
+    line-height: 1.25;
+    color: #fafafa;
+    font-size: 14px; }
+    @media only screen and (min-width: 420px) {
+      .narrative-panel p {
+        font-size: 18px; } }
+    @media only screen and (min-width: 768px) {
+      .narrative-panel p {
+        font-size: 22px; } }
+  .narrative-panel nav {
+    width: 100%;
+    height: 50px;
+    padding: 10px 0 0 0;
+    text-align: center;
+    font-size: 15px; }
+
+.back {
+  border: 1px solid rgba(250, 250, 250, 0.8);
+  border-radius: 100%;
+  font-size: 15px;
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  float: left;
+  cursor: pointer; }
+  .back:hover {
+    border: 1px solid #fafafa; }
+  @media only screen and (min-width: 420px) {
+    .back {
+      padding: 9px; } }
+  @media only screen and (min-width: 768px) {
+    .back {
+      padding: 7px; } }
+
+.next {
+  border: 1px solid rgba(250, 250, 250, 0.8);
+  border-radius: 100%;
+  font-size: 15px;
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  float: right;
+  text-align: right;
+  cursor: pointer; }
+  .next:hover {
+    border: 1px solid #fafafa; }
+  @media only screen and (min-width: 420px) {
+    .next {
+      padding: 9px; } }
+  @media only screen and (min-width: 768px) {
+    .next {
+      padding: 7px; } }
+
+#narrative-1 {
+  visibility: hidden; }
+  #narrative-1.is-visible {
     visibility: visible;
     -webkit-transition: visibility 0s 0.5s;
     -moz-transition: visibility 0s 0.5s;
     transition: visibility 0s 0.5s; }
-  @media only screen and (min-width: 768px) {
-    #borders {
-      top: 80px;
-      padding: 25px;
-      height: 200px; } }
-  #borders p {
-    font-size: 16px;
-    font-weight: 300;
-    letter-spacing: 0.05rem;
-    line-height: 1.25;
-    color: #fafafa; }
-    @media only screen and (min-width: 768px) {
-      #borders p {
-        font-size: 24px; } }
 
-#sensors {
-  visibility: hidden;
-  position: absolute;
-  bottom: 0;
-  margin-top: 60vh;
-  height: 200px;
-  width: 100%;
-  background-color: #fafafa;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s; }
-  #sensors.is-visible {
+#narrative-2 {
+  visibility: hidden; }
+  #narrative-2.is-visible {
     visibility: visible;
-    -webkit-transition: visibility 1s 0s;
-    -moz-transition: visibility 1s 0s;
-    transition: visibility 1s 0s; }
-  @media only screen and (min-width: 768px) {
-    #sensors {
-      position: absolute;
-      margin-top: 0;
-      max-width: 460px;
-      top: 0;
-      right: 0;
-      height: 100%; } }
-  #sensors .sensors-content {
-    top: 0;
-    left: 0;
-    height: 100%;
-    padding: 80px;
-    overflow: auto; }
-    #sensors .sensors-content h3 {
-      padding-bottom: 20px; }
-    #sensors .sensors-content img {
-      padding: 20px 0px; }
+    -webkit-transition: visibility 0s 0.5s;
+    -moz-transition: visibility 0s 0.5s;
+    transition: visibility 0s 0.5s; }
 
+#narrative-3 {
+  visibility: hidden; }
+  #narrative-3.is-visible {
+    visibility: visible;
+    -webkit-transition: visibility 0s 0.5s;
+    -moz-transition: visibility 0s 0.5s;
+    transition: visibility 0s 0.5s; }
+
+/*
+#sensors {
+	visibility: hidden;
+	position: absolute;
+	bottom: 0;
+	margin-top: 60vh;
+	height: 200px;
+	width: 100%;
+	background-color: $il-white;
+	@include transition(all .5s);
+
+	&.is-visible {
+		visibility: visible;
+		@include transition(visibility 1s 0s);
+	}
+
+	@include MQ (M) {
+		position: absolute;
+		margin-top: 0;
+		max-width: 460px;
+		top: 0;
+		right: 0;
+		height: 100%;
+	}
+	.sensors-content {
+		top: 0;
+		left: 0;
+		height: 100%;
+		padding: 80px;
+		overflow: auto;
+		h3 {
+			padding-bottom: 20px;
+		}
+		img {
+			padding: 20px 0px;
+		}
+	}
+}*/
 .main-content .btn {
   position: relative;
   display: inline-block;

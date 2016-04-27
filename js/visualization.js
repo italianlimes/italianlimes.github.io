@@ -463,7 +463,7 @@ function addBorder(callback) {
             oldBorderGeometry.addAttribute('position', new THREE.BufferAttribute(borderVts, 3));
             var material = new THREE.LineBasicMaterial({
                 //color: new THREE.Color(0x4444ff),
-                color: new THREE.Color(0xff3232),
+                color: new THREE.Color(0xffffff),
                 fog: false,
                 linewidth: parameters.borderLineWidth,
                 transparent: true,
@@ -476,7 +476,7 @@ function addBorder(callback) {
             updateBorderPosition(vertexPositions, oldBorderGeometry, 0, 0, worldWidth - 1.0, worldHeight - 1.0);
             var index = Math.round(vertexPositions.length * 0.228) * 3.0;
             p1920 = new THREE.Mesh(new THREE.BoxGeometry(0.001, 0.001, 0.001), new THREE.MeshBasicMaterial({
-                color: 0x00ff00,
+                color: new THREE.Color(0xff3232),
                 transparent: true,
                 opacity: 0
             }));

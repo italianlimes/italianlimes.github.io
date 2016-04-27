@@ -446,7 +446,7 @@ function addBorder(callback) {
         scene.add(borderMesh);
         updateBorderPosition(borderPoints, borderGeometry, 0, 0, worldWidth - 1.0, worldHeight - 1.0);
 
-        var index = Math.round(vertexPositions.length * 0.23) * 3.0;
+        var index = Math.round(vertexPositions.length * 0.24) * 3.0;
         p2016 = new THREE.Mesh(new THREE.BoxGeometry(0.001, 0.001, 0.001), new THREE.MeshBasicMaterial({
             color: 0x00ff00,
             transparent: true,

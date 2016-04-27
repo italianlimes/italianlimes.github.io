@@ -556,12 +556,29 @@ function render() {
                 animationFinished = true;
 
         }
-        var t = Math.max(0, Math.min(1, maxDis * 2 - 0.1)); //Math.max(0.0001,1-Math.max(Math.min(clock.getElapsedTime()-delay,2.0),0)/1.0)
+        /*********var t = Math.max(0, Math.min(1, maxDis * 2 - 0.1));
         if (animationFinished)
             t = Math.max(0, Math.min(1, maxDis * 12 - 0.2));
         //console.log(t);
         mesh.material.transparent = true;
         mesh.material.opacity = t;
+        *******************/
+        var t = Math.max(0, Math.min(1, maxDis * 2 - 0.1)); //Math.max(0.0001,1-Math.max(Math.min(clock.getElapsedTime()-delay,2.0),0)/1.0)
+
+        if (animationFinished)
+            t = Math.max(0, Math.min(1, maxDis * 12 - 0.2));
+        mesh.material.transparent = true;
+        if(t-0.2<0){
+          var tt=Math.min(1,Math.max(0,-(t-0.2)/0.2));
+          mesh.material.wireframe=false;
+          mesh.material.opacity = tt*0.8;
+        }else{
+          mesh.material.wireframe=true;
+          mesh.material.opacity = Math.max(0,t-0.2);
+        }
+        /****************/
+        
+        
         //mesh.material.opacity=Math.max(0.0000,1-Math.max(Math.min(clock.getElapsedTime()-delay,3.0),0)/3.0);
         scene.getObjectByName('oldBorder').material.transparent = true;
         scene.getObjectByName('oldBorder').material.opacity = 1 - t;

@@ -401,6 +401,7 @@ html, body {
 
 	&::after {
 		/* overlay layer */
+		content: '';
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -415,7 +416,8 @@ html, body {
 		@include transition(visibility 0s 0s);
 
 		&::after {
-			background: rgba(#000, .6);
+			content: '';
+			background: rgba($il-black, .6);
 			@include transition(background .3s 0s);
 		}
 

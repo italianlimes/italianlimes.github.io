@@ -97,7 +97,7 @@ a {
 		box-shadow: none;
 		border-color: none;
 	}
-	@include transition(all .3s);
+	@include transition(all .2s);
 }
 
 img {
@@ -113,6 +113,7 @@ Main components
 
 html, body {
 	height: 100%;
+	@include font-smoothing;
 }
 
 // 100% height row section
@@ -294,40 +295,108 @@ html, body {
 
 // borders
 
-#borders {
-	visibility: hidden;
+.narrative-panel {
 	position: absolute;
 	max-width: 460px;
 	right: 0;
 	bottom: 0;
 	padding: 20px;
 	height: auto;
-	@include transition(all .5s);
-
-	&.is-visible {
-		visibility: visible;
-		@include transition(visibility 0s 0.5s);
-	}
-
 	@include MQ(M) {
 		top: 80px;
 		padding: 25px;
 		height: 200px;
 	}
-	p {
-		font-size: (16px);
-		font-weight: 300;
+	h1 {
+		font-weight: 700;
 		letter-spacing: 0.05rem;
 		line-height: 1.25;
 		color: $il-white;
-		@include MQ(M) {
-			font-size: (24px);
+			font-size: 14px;
+		@include MQ(S) {
+			font-size: 18px;
 			}
+		@include MQ(M) {
+			font-size: 22px;
+			}
+	}
+	p {
+		font-weight: 400;
+		letter-spacing: 0.05rem;
+		line-height: 1.25;
+		color: $il-white;
+			font-size: 14px;
+		@include MQ(S) {
+			font-size: 18px;
+			}
+		@include MQ(M) {
+			font-size: 22px;
+			}
+	}
+	nav {
+		width: 100%;
+		height: 50px;
+		padding: 10px 0 0 0;
+		text-align: center;
+		font-size: 15px;
+	}
+	@include transition(all .5s);
+}
+
+.back {
+	border: 1px solid rgba($il-white, 0.8);
+	&:hover {border: 1px solid $il-white;}
+	border-radius: 100%;
+	font-size: 15px;
+	width: 40px;
+	height: 40px;
+	padding: 12px;
+	@include MQ(S) {padding: 9px;}
+	@include MQ(M) {padding: 7px;}
+	float:left;
+	cursor: pointer;
+}
+.next {
+	border: 1px solid rgba($il-white, 0.8);
+	&:hover {border: 1px solid $il-white;}
+	border-radius: 100%;
+	font-size: 15px;
+	width: 40px;
+	height: 40px;
+	padding: 12px;
+	@include MQ(S) {padding: 9px;}
+	@include MQ(M) {padding: 7px;}
+	float:right;
+	text-align: right;
+	cursor: pointer;
+}
+
+#narrative-1 {
+	visibility: hidden;
+	&.is-visible {
+		visibility: visible;
+		@include transition(visibility 0s 0.5s);
+	}
+}
+
+#narrative-2 {
+	visibility: hidden;
+	&.is-visible {
+		visibility: visible;
+		@include transition(visibility 0s 0.5s);
+	}
+}
+
+#narrative-3 {
+	visibility: hidden;
+	&.is-visible {
+		visibility: visible;
+		@include transition(visibility 0s 0.5s);
 	}
 }
 
 // sensors
-
+/*
 #sensors {
 	visibility: hidden;
 	position: absolute;
@@ -364,7 +433,7 @@ html, body {
 			padding: 20px 0px;
 		}
 	}
-}
+}*/
 
 // content
 
@@ -401,6 +470,7 @@ html, body {
 
 	&::after {
 		/* overlay layer */
+		content: '';
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -415,7 +485,8 @@ html, body {
 		@include transition(visibility 0s 0s);
 
 		&::after {
-			background: rgba(#000, .6);
+			content: '';
+			background: rgba($il-black, .6);
 			@include transition(background .3s 0s);
 		}
 
@@ -678,6 +749,107 @@ ul.tabs {
 	h5 {font-weight: 700; padding-bottom: 5px;}
 	p {font-size: 1rem; line-height: 1.3;}
 	&:first-child {padding-right: 4%;}
+}
+
+/*
+	Press Page
+*/
+
+.press-kit-row {
+	width: 100%;
+	padding: 120px 5% 100px;
+	@include MQ(M) { padding: 30% 10% 25%; }
+	background-color: rgba($il-blue, 1.0);
+	a {
+		font-family: $primary-font;
+		@include font-smoothing;
+		color: rgba($il-white, 0.8);
+		&:hover {
+			color: rgba($il-white, 1.0);
+		}
+	}
+	.press-kit-item-box {
+		text-align: center;
+		max-width:1200px;
+
+		.press-kit-item {
+			border: 2px solid;
+			border-radius: 100%;
+			display: inline-block;
+			text-align: center;
+				width: 80px;
+				height: 80px;
+				margin: 0 1%;
+			@include MQ(S) {
+				width: 100px;
+				height: 100px;
+				margin: 0 3%;
+			}
+			@include MQ(M) {
+				width: 140px;
+				height: 140px;
+			}
+			.press-kit-item-title {
+				font-size: 0.75em;
+				padding: 20px 0 2px;
+				@include MQ(M) {
+					font-size: 1.25em;
+					padding: 35px 0 2px;
+				}
+				font-weight: 700;
+			}
+			.press-kit-item-icon {
+				font-size: 2.5em;
+				@include MQ(M) { font-size: 3em; }
+				font-weight: 400;
+			}
+		}
+	}
+}
+
+.press-list-row {
+	width: 100%;
+	padding: 20px 4% 10%;
+	@include MQ(S) { padding: 40px 10% 10%; }
+	@include MQ(M) { padding: 40px 15% 10%; }
+	@include MQ(L) { padding: 40px 25% 10%; }
+	a {
+		font-family: $secondary-font;
+		color: $il-black;
+		&:hover {
+			color: $il-blue;
+		}
+	}
+	.press-list {
+		padding: 30px 20px;
+		@include MQ(S) {padding: 40px 20px;}
+		@include MQ(M) {padding: 50px 20px;}
+		@include MQ(L) {padding: 60px 20px;}
+		width: 100%;
+		border-bottom: 1px solid rgba($il-black, 0.5);
+		font-family: $secondary-font;
+		line-height: 1.3;
+		.press-author {
+			font-weight: 700;
+			font-size: 1.25em;
+			@include MQ(S) {font-size: 1.5em;}
+			@include MQ(M) {font-size: 1.75em;}
+		}
+		.press-title {
+			font-weight: 400;
+			font-size: 1.25em;
+			@include MQ(S) {font-size: 1.5em;}
+			@include MQ(M) {font-size: 1.75em;}
+		}
+		.press-date {
+			font-family: $primary-font;
+			font-weight: 400;
+			padding-top: 5px;
+			font-size: 0.8em;
+			@include MQ(S) {font-size: 1em;}
+			@include MQ(M) {font-size: 1em;}
+		}
+	}
 }
 
 /*

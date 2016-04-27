@@ -139,9 +139,18 @@ function init() {
                 window.addEventListener('resize', onResize, false);
                 //  window.addEventListener( 'click', onMouseClick, false );
                 $(window).bind("tap", onMouseClick);
-                $("canvas").bind("click", onMouseClick);
-                $('#sensors-close').on('click', function(event){
+                //$("canvas").bind("click", onMouseClick);
+                $('#narrative-btn-2').on('click', function(event){
+                  showView(1);
+                });
+                $('#narrative-btn-3').on('click', function(event){
                   showView(0);
+                });
+                $('#narrative-btn-4').on('click', function(event){
+                  showView(2);
+                });
+                $('#narrative-btn-5').on('click', function(event){
+                  showView(1);
                 });
                 render();
                 $("canvas").fadeIn();
@@ -578,8 +587,8 @@ function render() {
           mesh.material.opacity = Math.max(0,t-0.2);
         }
         /****************/
-        
-        
+
+
         //mesh.material.opacity=Math.max(0.0000,1-Math.max(Math.min(clock.getElapsedTime()-delay,3.0),0)/3.0);
         scene.getObjectByName('oldBorder').material.transparent = true;
         scene.getObjectByName('oldBorder').material.opacity = 1 - t;
@@ -700,16 +709,27 @@ function showView(i) {
     if (i == 0) {
         orbit.autoRotate = true;
         orbit.enableZoom = true;
-        $("#sensors").removeClass('is-visible');
-        $("#borders").addClass('is-visible');
+        $("#narrative-1").addClass("is-visible");
+        $("#narrative-2").removeClass("is-visible");
+        $("#narrative-3").removeClass('is-visible');
     }
     if (i == 1) {
         orbit.autoRotate = false;
         parameters.animate = false;
-        orbit.enableZoom = false;
+        orbit.enableZoom = true;
         animating = true;
-        $("#borders").removeClass("is-visible");
-        $("#sensors").addClass('is-visible');
+        $("#narrative-1").removeClass("is-visible");
+        $("#narrative-2").addClass("is-visible");
+        $("#narrative-3").removeClass('is-visible');
+    }
+    if (i == 2) {
+        orbit.autoRotate = false;
+        parameters.animate = false;
+        orbit.enableZoom = true;
+        animating = true;
+        $("#narrative-1").removeClass("is-visible");
+        $("#narrative-2").removeClass("is-visible");
+        $("#narrative-3").addClass('is-visible');
     }
 }
 

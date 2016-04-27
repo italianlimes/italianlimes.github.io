@@ -437,7 +437,7 @@ function addBorder(callback) {
         borderVertices = new Float32Array(vertexPositions.length * 3); // three components per vertex
         borderGeometry.addAttribute('position', new THREE.BufferAttribute(borderVertices, 3));
         var material = new THREE.LineBasicMaterial({
-            color: parameters.borderColor,
+            color:  new THREE.Color(0xff3232),
             fog: false,
             linewidth: parameters.borderLineWidth
         });

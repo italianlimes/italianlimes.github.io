@@ -43,6 +43,15 @@
   -moz-background-size: cover;
   -o-background-size: cover; }
 
+.background-press {
+  background-image: url("/images/press.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover; }
+
 .pure-g > div {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1194,7 +1203,7 @@ ul.tabs {
   background-color: #5ec8d8; }
   @media only screen and (min-width: 768px) {
     .press-kit-row {
-      padding: 30% 10% 25%; } }
+      padding: 20% 10% 25%; } }
   .press-kit-row a {
     font-family: "Aileron", helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;

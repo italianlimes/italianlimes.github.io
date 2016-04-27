@@ -50,3 +50,7 @@
 .background-glacier {
     @include background('/images/glacier.jpg');
 }
+
+.background-press {
+    @include background('/images/press.jpg');
+}

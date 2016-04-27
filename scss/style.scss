@@ -748,7 +748,7 @@ ul.tabs {
 .press-kit-row {
 	width: 100%;
 	padding: 120px 5% 100px;
-	@include MQ(M) { padding: 30% 10% 25%; }
+	@include MQ(M) { padding: 20% 10% 25%; }
 	background-color: rgba($il-blue, 1.0);
 	a {
 		font-family: $primary-font;

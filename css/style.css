@@ -576,6 +576,29 @@ img {
   width: 100%;
   height: auto; }
 
+button {
+  display: inline-block;
+  background: transparent;
+  height: 40px;
+  text-transform: uppercase;
+  font-size: 14px;
+  border: 1px solid rgba(250, 250, 250, 0.8);
+  padding: 0 15px;
+  font-weight: 700;
+  color: #fafafa; }
+  button a {
+    color: #fafafa; }
+    button a:hover {
+      color: #fafafa; }
+  button .button-square {
+    border-radius: 2px; }
+  button .button-round {
+    border-radius: 100%; }
+  button:hover {
+    cursor: pointer;
+    color: #fafafa;
+    border: 1px solid #fafafa; }
+
 /* --------------------------------
 
 Main components
@@ -739,7 +762,7 @@ html, body {
 .narrative-panel {
   position: absolute;
   max-width: 460px;
-  right: 0;
+  left: 0;
   bottom: 0;
   padding: 20px;
   height: auto;
@@ -842,6 +865,9 @@ html, body {
     -webkit-transition: visibility 0s 0.5s;
     -moz-transition: visibility 0s 0.5s;
     transition: visibility 0s 0.5s; }
+
+#read-more {
+  float: right; }
 
 /*
 #sensors {

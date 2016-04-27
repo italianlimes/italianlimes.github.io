@@ -93,13 +93,13 @@ function init() {
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000000000);
     camera.position.x = 0;
     camera.position.y = 0.5 * imgResolution;
-    if (window.innerWidth < 768) camera.position.y += imgResolution * 0.8 * (1 - (window.innerWidth / 768.0));
+    if (window.innerWidth < 768) camera.position.y += imgResolution * 1.2 * (1 - (window.innerWidth / 768.0));
     camera.position.z = 0;
     orbit = new THREE.OrbitControls(camera, renderer.domElement);
     //camera.lookAt(new THREE.Vector3(0,0,0));
     orbit.zoomSpeed = 0.05;
     orbit.minDistance = 10;
-    orbit.maxDistance = imgResolution*0.75;
+    orbit.maxDistance = imgResolution*1;
     orbit.rotationSpeed = 0.1;
     orbit.rotateUp(-1.28);
     orbit.rotateLeft(-0.8);

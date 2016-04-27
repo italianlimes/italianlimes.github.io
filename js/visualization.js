@@ -298,7 +298,7 @@ function addSky() {
 function addSimilaunModel(callback) {
     var texloader = new THREE.TextureLoader();
     texloader.load("textures/depthMap_scaled" + imgResolution + ".jpg", function(depthTexture) {
-        texloader.load("textures/colorMap_scaled512.jpg", function(colorTexture) {
+        texloader.load("textures/colorMap_original.jpg", function(colorTexture) {
             zRatio = 0.06 * worldWidth / 50.0;
             data = generateModel(depthTexture.image.width, depthTexture.image.height, depthTexture);
             similaunGeometry = new THREE.PlaneBufferGeometry(worldWidth, worldHeight, depthTexture.image.width - 1, depthTexture.image.height - 1);

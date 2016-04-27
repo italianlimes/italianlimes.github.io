@@ -92,7 +92,7 @@ function init() {
     //CAMERA
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000000000);
     camera.position.x = 0;
-    camera.position.y = 0.5 * imgResolution;
+    camera.position.y = 0.6 * imgResolution;
     if (window.innerWidth < 768) camera.position.y += imgResolution * 1.2 * (1 - (window.innerWidth / 768.0));
     camera.position.z = 0;
     orbit = new THREE.OrbitControls(camera, renderer.domElement);

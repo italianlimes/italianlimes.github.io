@@ -432,7 +432,7 @@ function addSensors(callback) {
 var p2016, p1920;
 
 function addBorder(callback) {
-    $.getJSON("borders/newBorder_256.json", function(vertexPositions) {
+    $.getJSON("borders/oldBorder_256.json", function(vertexPositions) {
         borderPoints = vertexPositions;
         borderVertices = new Float32Array(vertexPositions.length * 3); // three components per vertex
         borderGeometry.addAttribute('position', new THREE.BufferAttribute(borderVertices, 3));
@@ -457,7 +457,7 @@ function addBorder(callback) {
             borderGeometry.attributes.position.array[index * 3.0 + 2]);
         scene.add(p2016);
 
-        $.getJSON("borders/oldBorder_256.json", function(vertexPositions) {
+        $.getJSON("borders/newBorder_256.json", function(vertexPositions) {
             var oldBorderGeometry = new THREE.BufferGeometry();
             var borderVts = new Float32Array(vertexPositions.length * 3); // three components per vertex
             oldBorderGeometry.addAttribute('position', new THREE.BufferAttribute(borderVts, 3));

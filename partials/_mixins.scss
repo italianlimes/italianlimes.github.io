@@ -54,3 +54,7 @@
 .background-press {
     @include background('/images/press.jpg');
 }
+
+.background-project {
+    @include background('/images/gallery/italian-limes-gallery-01.jpg');
+}

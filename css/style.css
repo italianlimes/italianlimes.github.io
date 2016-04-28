@@ -52,6 +52,15 @@
   -moz-background-size: cover;
   -o-background-size: cover; }
 
+.background-project {
+  background-image: url("/images/gallery/italian-limes-gallery-01.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover; }
+
 .pure-g > div {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

@@ -169,6 +169,7 @@ html, body {
 .overlay {
 	@media only screen and (max-width: 440px){
 		@include background('/images/alps.jpg'); // if mobile, show background image
+		background-size: cover;
 	}
 	position: fixed;
 	top: 0;
@@ -193,7 +194,7 @@ html, body {
 
 * { box-sizing: border-box; }
 .video-background {
-	background: $il-white;
+	background: $il-black;
 	position: fixed;
 	top: 0; right: 0; bottom: 0; left: 0;
 	z-index: -99;

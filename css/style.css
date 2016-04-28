@@ -643,7 +643,8 @@ html, body {
     .overlay {
       background-image: url("/images/alps.jpg");
       background-position: 0 0;
-      background-repeat: no-repeat; } }
+      background-repeat: no-repeat;
+      background-size: cover; } }
   .overlay #explore {
     margin-top: 40px;
     color: #fafafa;
@@ -659,7 +660,7 @@ html, body {
   box-sizing: border-box; }
 
 .video-background {
-  background: #fafafa;
+  background: #141418;
   position: fixed;
   top: 0;
   right: 0;

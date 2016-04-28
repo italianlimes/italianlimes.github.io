@@ -109,6 +109,14 @@ img {
 	height: auto;
 }
 
+figcaption {
+	@include font-size(16px);
+	line-height: 1.2rem;
+	margin-top: 10px;
+	font-family: $primary-font;
+	padding: 0px 10px 40px;
+}
+
 button {
 	display: inline-block;
 	background: transparent;
@@ -390,46 +398,6 @@ html, body {
 		color: rgba($il-white, 1.0);
 	}
 }
-
-// sensors
-/*
-#sensors {
-	visibility: hidden;
-	position: absolute;
-	bottom: 0;
-	margin-top: 60vh;
-	height: 200px;
-	width: 100%;
-	background-color: $il-white;
-	@include transition(all .5s);
-
-	&.is-visible {
-		visibility: visible;
-		@include transition(visibility 1s 0s);
-	}
-
-	@include MQ (M) {
-		position: absolute;
-		margin-top: 0;
-		max-width: 460px;
-		top: 0;
-		right: 0;
-		height: 100%;
-	}
-	.sensors-content {
-		top: 0;
-		left: 0;
-		height: 100%;
-		padding: 80px;
-		overflow: auto;
-		h3 {
-			padding-bottom: 20px;
-		}
-		img {
-			padding: 20px 0px;
-		}
-	}
-}*/
 
 // content
 
@@ -867,53 +835,6 @@ ul.tabs {
 }
 
 /*
-	Side Menu
-*/
-
-.menu-hover {
-	z-index: 99;
-	display: block;
-	overflow: hidden;
-	position: fixed;
-	width: 250px;
-	height: 370px;
-	top: 0px;
-	left: 0px;
-}
-
-ul.logo {
-	margin: 40px;
-	left: 40px;
-	font-size: 18px;
-	li {
-    	&:hover {
-    	color: darken($il-blue, 20%);
-    	cursor: pointer;
-		}
-	}
-}
-
-.side-menu {
-	display: block;
-	width: auto;
-	left: -200px;
-	margin-left: 40px;
-	height: 100%;
-	position: fixed;
-	cursor: pointer;
-	color: $il-black;
-	li {
-		font-size: 18px;
-		line-height: 34px;
-		a {
-			color: $il-black;
-			&:hover {
-			color: darken($il-blue, 20%);}
-		}
-	}
-}
-
-/*
 	Publication
 */
 
@@ -1005,14 +926,7 @@ ul.logo {
 		@include MQ(L) {}
 		@include MQ(X) {}
 	}
-	figcaption {
-		@include font-size(16px);
-		line-height: 1.2rem;
-		margin-top: 10px;
-		font-family: $primary-font;
-	}
 }
-
 
 /*
 	lightgallery

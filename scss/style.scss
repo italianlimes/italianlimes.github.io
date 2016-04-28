@@ -375,7 +375,21 @@ html, body {
 	}
 }
 
-#read-more {float:right;}
+#read-more {
+	height: 40px;
+	padding: 10px;
+	font-weight: 700;
+	float:right;
+	text-transform: uppercase;
+	color: rgba($il-white, 0.7);
+	a {
+		color: rgba($il-white, 0.7);
+	}
+	&:hover {
+		cursor: pointer;
+		color: rgba($il-white, 1.0);
+	}
+}
 
 // sensors
 /*

@@ -840,7 +840,17 @@ html, body {
     transition: visibility 0s 0.5s; }
 
 #read-more {
-  float: right; }
+  height: 40px;
+  padding: 10px;
+  font-weight: 700;
+  float: right;
+  text-transform: uppercase;
+  color: rgba(250, 250, 250, 0.7); }
+  #read-more a {
+    color: rgba(250, 250, 250, 0.7); }
+  #read-more:hover {
+    cursor: pointer;
+    color: #fafafa; }
 
 /*
 #sensors {

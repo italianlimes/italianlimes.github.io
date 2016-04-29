@@ -668,6 +668,7 @@ function onMouseMove(event) {
             sensors[v][q].material.color.set(0xffffff);
     if (currentView==0) orbit.autoRotate = true;
     parameters.animate = true;
+    if(currentView==2){
     var label = document.getElementById('label');
     $("#label").css("display", "none");
     for (var v = 0; v < sensors.length; v++) {
@@ -685,6 +686,7 @@ function onMouseMove(event) {
             parameters.animate = false;
         }
     }
+  }
 }
 
 function onMouseClick(event) {
@@ -840,15 +842,16 @@ for (var v = 0; v < sensors.length; v++)
   $("#label_2016").css('opacity', 1 - Math.max(t, 0));
   $("#label").css('opacity', 1 - Math.max(t, 0));
 
-  var vector04 = toScreenPosition(sensors[0][4]);
+  var vector04 = toScreenPosition(sensors[0][3]);
   var vector44 = toScreenPosition(sensors[4][3]);
   var vector40 = toScreenPosition(sensors[4][1]);
   var vector00 = toScreenPosition(sensors[0][1]);
 
-  $("#label_italy").css('top', vector00.y - $("#label_italy").height() * 1.2);
-  $("#label_italy").css('left', vector04.x);
-  $("#label_austria").css('top', vector44.y - $("#label_austria").height() * 1.2);
-  $("#label_austria").css('left', vector40.x);
+  $("#label_italy").css('left', vector40.x);
+  $("#label_italy").css('top', vector44.y - $("#label_italy").height() * 1.2);
+  $("#label_austria").css('left', vector04.x);
+  $("#label_austria").css('top', vector00.y - $("#label_austria").height() * 1.2);
+
   $("#label_austria").css('opacity', 1 - Math.max(t, 0));
   $("#label_italy").css('opacity', 1 - Math.max(t, 0));
 }

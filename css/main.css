@@ -81,3 +81,9 @@ canvas{
 #label_1920{
   white-space: pre;position:absolute;pointer-events:none;font-size:14px;color:white;z-index=100;opacity:0;
 }
+#label_italy{
+  white-space: pre;position:absolute;pointer-events:none;font-size:14px;color:white;z-index=100;opacity:0;
+}
+#label_austria{
+  white-space: pre;position:absolute;pointer-events:none;font-size:14px;color:white;z-index=100;opacity:0;
+}

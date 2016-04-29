@@ -20,7 +20,7 @@ var displacements, displacementAlpha;
 var animationStarted = false;
 var interpolationIndexes = new Array();
 var animating = false;
-
+var currentView=0;
 var coordinates = [
   {id:1, latitude: "46.76696678", longitude: "10.89216134", altitude: 3424.14},
   {id:3, latitude: "46.76625583", longitude: "10.89358736", altitude: 3422.61},
@@ -62,8 +62,8 @@ var parameters = new function() {
     this.meshColor = "#ffffff";
     this.useTexture = true;
     this.wireframe = true;
-    this.topColor = "#4499ff";
-    this.bottomColor = "#120101";
+    this.topColor = "#000000";
+    this.bottomColor = "#000000";
     this.fogColor = this.bottomColor;
     this.animate = true;
     this.autorotate = true;
@@ -386,7 +386,7 @@ function addSensors(callback) {
     for (var x = 0; x < 5; x++) {
         sensors[x] = new Array(5);
         for (var y = 0; y < 5; y++) {
-           var material = new THREE.MeshBasicMaterial({fog:false,color: parameters.sensorsColor});
+           var material = new THREE.MeshBasicMaterial({fog:false,color: parameters.sensorsColor,transparent:true,opacity:0});
             var sphereGeom = new  THREE.SphereGeometry(worldWidth/250.0, 15,15);// Remove center vertex
             var mesh=new THREE.Mesh(sphereGeom, material);
             mesh.scale.set(1,0.1,1);
@@ -538,7 +538,7 @@ function render() {
         time = clock.getElapsedTime();
     var maxDis = Math.max(Math.abs(orbit.getPolarAngle()), Math.abs(orbit.getAzimuthalAngle()));
     var yAlpha = Math.abs(camera.position.y - 0.5 * imgResolution);
-    if (animating) {
+    /*if (animating) {
         if (!animationFinished) {
             var r = 0.015;
             if (orbit.getAzimuthalAngle() > 0.01) {
@@ -554,25 +554,13 @@ function render() {
             if (orbit.getPolarAngle() < -0.01) {
                 orbit.rotateUp(Math.max(-r, orbit.getPolarAngle()));
             }
-            /*
-            if(camera.position.y<0.5*imgResolution-0.01){
-            camera.position.y+=1;
-          }
-          if(camera.position.y>0.5*imgResolution+0.01){
-          camera.position.y-=1;
-        }*/
-            //  console.log(orbit.getZoomLevel());
+              //  console.log(orbit.getZoomLevel());
             if (maxDis < 0.01)
                 animationFinished = true;
 
         }
-        /*********var t = Math.max(0, Math.min(1, maxDis * 2 - 0.1));
-        if (animationFinished)
-            t = Math.max(0, Math.min(1, maxDis * 12 - 0.2));
-        //console.log(t);
-        mesh.material.transparent = true;
-        mesh.material.opacity = t;
-        *******************/
+        var maxDis = Math.max(Math.abs(orbit.getPolarAngle()), Math.abs(orbit.getAzimuthalAngle()));
+
         var t = Math.max(0, Math.min(1, maxDis * 2 - 0.1)); //Math.max(0.0001,1-Math.max(Math.min(clock.getElapsedTime()-delay,2.0),0)/1.0)
 
         if (animationFinished)
@@ -586,7 +574,6 @@ function render() {
           mesh.material.wireframe=true;
           mesh.material.opacity = Math.max(0,t-0.2);
         }
-        /****************/
 
 
         //mesh.material.opacity=Math.max(0.0000,1-Math.max(Math.min(clock.getElapsedTime()-delay,3.0),0)/3.0);
@@ -610,12 +597,12 @@ function render() {
             animating = false;
             orbit.autoRotate = true;
         }
-    }
+    }*/
     var t =0.99;// Math.min(0.99, Math.max(0.15, Math.abs(Math.sin(clock.getElapsedTime() * 0.2 + 0.3)) * 1.5 - 0.2));
 
     if (parameters.animate || t < 0.95) {
         scene.getObjectByName('similaunMesh').material.color = new THREE.Color(t, t, t);
-        scene.getObjectByName('sky').material.uniforms.topColor.value = new THREE.Color(t * 0.4, 0.1 + t * 0.6, 0.2 + 0.8 * t);
+    //    scene.getObjectByName('sky').material.uniforms.topColor.value = new THREE.Color(t * 0.4, 0.1 + t * 0.6, 0.2 + 0.8 * t);
     }
     stats.update();
     orbit.update();
@@ -679,7 +666,7 @@ function onMouseMove(event) {
     for (var v = 0; v < sensors.length; v++)
         for (var q = 0; q < sensors[v].length; q++)
             sensors[v][q].material.color.set(0xffffff);
-    if (!animating) orbit.autoRotate = true;
+    if (currentView==0) orbit.autoRotate = true;
     parameters.animate = true;
     var label = document.getElementById('label');
     $("#label").css("display", "none");
@@ -704,33 +691,166 @@ function onMouseClick(event) {
     if (!parameters.animate) showView(1);
     else showView(0);
 }
-
+var animating=false;
+var interval;
+var t=0;
 function showView(i) {
-    if (i == 0) {
+  if(animating)clearInterval(interval);
+  currentView=i;
+  t=0;
+  animating=true;
+  var maxDis = Math.max(Math.abs(orbit.getPolarAngle()), Math.abs(orbit.getAzimuthalAngle()));
+
+  if (i == 0) {
+    interval=setInterval(function(){
+      var r = 0.012;
+      var changed=false;
+      if (orbit.getPolarAngle() < 1.27) {
+        orbit.rotateUp(-r);//Math.min(r, orbit.getPolarAngle()+1.28));
+        changed=true;
+      }
+      if (orbit.getPolarAngle() > 1.29) {
+        orbit.rotateUp(r);//Math.min(r, orbit.getPolarAngle()+1.28));
+        changed=true;
+      }
+      transitions(0);
+      if(!changed){
+        clearInterval(interval);
+        console.log("done");
+        animating=false;
+      }
+    },1000/60.0);
         orbit.autoRotate = true;
         orbit.enableZoom = true;
+        orbit.enableRotate=true;
         $("#narrative-1").addClass("is-visible");
         $("#narrative-2").removeClass("is-visible");
         $("#narrative-3").removeClass('is-visible');
     }
     if (i == 1) {
+      interval=setInterval(function(){
+        var r = 0.012;
+        var changed=false;
+        if (orbit.getAzimuthalAngle() > 0.01) {
+            orbit.rotateLeft(Math.min(r, orbit.getAzimuthalAngle()));
+            changed=true;
+        }
+        if (orbit.getAzimuthalAngle() < -0.01) {
+            orbit.rotateLeft(Math.max(-r, orbit.getAzimuthalAngle()));
+            changed=true;
+        }
+        if (orbit.getPolarAngle() > 0.01) {
+            orbit.rotateUp(Math.min(r, orbit.getPolarAngle()));
+            changed=true;
+        }
+        if (orbit.getPolarAngle() < -0.01) {
+            orbit.rotateUp(Math.max(-r, orbit.getPolarAngle()));
+            changed=true;
+        }
+
+        transitions(1);
+        if(!changed){
+        clearInterval(interval);
+        console.log("done");
+        animating=false;
+        }
+      },1000/60.0);
+
         orbit.autoRotate = false;
         parameters.animate = false;
-        orbit.enableZoom = true;
+        orbit.enableZoom = false;
+        orbit.enableRotate=false;
         animating = true;
         $("#narrative-1").removeClass("is-visible");
         $("#narrative-2").addClass("is-visible");
         $("#narrative-3").removeClass('is-visible');
     }
     if (i == 2) {
+      interval=setInterval(function(){
+        var t=scene.getObjectByName('grid').material.opacity;
+        if(t<1){
+          t+=0.2;
+          t=Math.min(1,t);
+          scene.getObjectByName('grid').material.opacity=Math.max(t,scene.getObjectByName('grid').material.opacity);
+          for (var v = 0; v < sensors.length; v++)
+              for (var q = 0; q < sensors[v].length; q++){
+                sensors[v][q].material.visible = true;
+                sensors[v][q].material.transparent = true;
+                sensors[v][q].material.opacity=Math.max(t,sensors[v][q].material.opacity);
+              }
+        }
+        else{
+          clearInterval(interval);
+          console.log("done");
+          animating=false;
+        }
+      },100);
         orbit.autoRotate = false;
         parameters.animate = false;
         orbit.enableZoom = true;
+        orbit.enableRotate=false;
         animating = true;
         $("#narrative-1").removeClass("is-visible");
         $("#narrative-2").removeClass("is-visible");
         $("#narrative-3").addClass('is-visible');
     }
+}
+
+function transitions(i){
+  var maxDis = Math.max(Math.abs(orbit.getPolarAngle()), Math.abs(orbit.getAzimuthalAngle()));
+  var t = Math.max(0, Math.min(1, maxDis * 2 - 0.1)); //Math.max(0.0001,1-Math.max(Math.min(clock.getElapsedTime()-delay,2.0),0)/1.0)
+  mesh.material.transparent = true;
+  if(t-0.2<0){
+    var tt=Math.min(1,Math.max(0,-(t-0.2)/0.2));
+    mesh.material.wireframe=false;
+    mesh.material.opacity = tt*0.8;
+  }else{
+    mesh.material.wireframe=true;
+    mesh.material.opacity = Math.max(0,t-0.2);
+  }
+  //mesh.material.opacity=Math.max(0.0000,1-Math.max(Math.min(clock.getElapsedTime()-delay,3.0),0)/3.0);
+  scene.getObjectByName('oldBorder').material.transparent = true;
+  scene.getObjectByName('oldBorder').material.opacity = 1 - t;
+//  scene.getObjectByName('grid').material.opacity = 1 - t;
+for (var v = 0; v < sensors.length; v++)
+    for (var q = 0; q < sensors[v].length; q++){
+      sensors[v][q].material.transparent = true;
+      sensors[v][q].material.opacity=Math.min(sensors[v][q].material.opacity,t);
+      if(sensors[v][q].material.opacity==0)
+      sensors[v][q].material.visible=false;
+      else
+      sensors[v][q].material.visible=true;
+    }
+    scene.getObjectByName('grid').material.opacity =  Math.min(t,scene.getObjectByName('grid').material.opacity);
+
+
+
+  $("#label_1920").css('opacity', 1 - Math.max(t, 0));
+  $("#label_2016").css('opacity', 1 - Math.max(t, 0));
+  $("#label").css('opacity', 1 - Math.max(t, 0));
+  var vector = toScreenPosition(p1920);
+  $("#label_1920").css('top', vector.y - $("#label_1920").height() * 1.2);
+  $("#label_1920").css('left', vector.x);
+  vector = toScreenPosition(p2016);
+  $("#label_2016").css('top', vector.y - $("#label_2016").height() * 1.2);
+  $("#label_2016").css('left', vector.x);
+
+
+  $("#label_1920").css('opacity', 1 - Math.max(t, 0));
+  $("#label_2016").css('opacity', 1 - Math.max(t, 0));
+  $("#label").css('opacity', 1 - Math.max(t, 0));
+
+  var vector04 = toScreenPosition(sensors[0][4]);
+  var vector44 = toScreenPosition(sensors[4][3]);
+  var vector40 = toScreenPosition(sensors[4][1]);
+  var vector00 = toScreenPosition(sensors[0][1]);
+
+  $("#label_italy").css('top', vector00.y - $("#label_italy").height() * 1.2);
+  $("#label_italy").css('left', vector04.x);
+  $("#label_austria").css('top', vector44.y - $("#label_austria").height() * 1.2);
+  $("#label_austria").css('left', vector40.x);
+  $("#label_austria").css('opacity', 1 - Math.max(t, 0));
+  $("#label_italy").css('opacity', 1 - Math.max(t, 0));
 }
 
 function updateMesh() {
@@ -795,7 +915,7 @@ function toScreenPosition(obj) {
     vector.y = -(vector.y * heightHalf) + heightHalf;
     return {
         x: vector.x,
-        y: vector.y
+        y: vector.y-5
     };
 };
 

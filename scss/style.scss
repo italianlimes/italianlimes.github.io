@@ -648,9 +648,8 @@ html, body {
 	left: 0;
 	height: 100%;
 	overflow: auto;
-	padding: 80px 5%;
-	@include MQ(S) {padding: 10%;}
-	@include MQ(M) {padding: 10%;}
+	padding: 80px 5% 20px;
+	@include MQ(S) {padding: 10% 10% 0 10%;}
 
 	/* smooth scrolling on touch devices */
 	-webkit-overflow-scrolling: touch;
@@ -665,6 +664,18 @@ html, body {
 
 		&:first-of-type {
 			margin-top: 0;
+		}
+	}
+}
+
+.panel-footer {
+	padding: 160px 0 20px 0;
+	p {
+		font-size: 14px;
+		color: rgba($il-black, 0.5);
+		a {
+			color: rgba($il-black, 0.7);
+			&:hover {color: rgba($il-blue, 1.0);}
 		}
 	}
 }
@@ -699,7 +710,6 @@ ul.tabs {
 
 .tab-content {
 	display: none;
-	padding-bottom: 20px;
 	&.current{
   		display: inherit;
 	}
